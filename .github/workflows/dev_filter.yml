@@ -1,45 +1,57 @@
-name: Filtered execution testing
+name: Execute and Validate Notebooks
 
 on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'Path to a Jupyter notebook or a requirements.txt file'
+        description: 'Path to a Jupyter notebook (.ipynb) or a requirements.txt file'
         required: true
         type: string
 
 jobs:
-  execute-and-validate:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set Up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install Basic Dependencies
         run: |
           pip install --upgrade pip
-          pip install nbconvert pytest pytest-nbval
+          pip install nbconvert jupyter pytest nbval
 
-      - name: Process File for Notebook Execution & Validation
+      - name: Execute and Validate Notebook(s)
+        shell: bash
         run: |
           FILE_PATH="${{ github.event.inputs.path }}"
           DIR_PATH=$(dirname "$FILE_PATH")
+          echo "Processing file: $FILE_PATH in directory: $DIR_PATH"
           
           if [[ "$FILE_PATH" == *.ipynb ]]; then
             echo "Processing single notebook: $FILE_PATH"
+            # If a requirements.txt exists in the notebook's directory, install its dependencies.
+            if [ -f "$DIR_PATH/requirements.txt" ]; then
+              echo "Found requirements.txt in $DIR_PATH. Installing dependencies..."
+              pip install -r "$DIR_PATH/requirements.txt"
+            else
+              echo "No requirements.txt found in $DIR_PATH."
+            fi
+            # Execute the notebook.
             jupyter nbconvert --execute --to notebook --inplace "$FILE_PATH"
+            # Validate the executed notebook.
             pytest --nbval "$FILE_PATH"
           
           elif [[ "$(basename "$FILE_PATH")" == "requirements.txt" ]]; then
             echo "Processing requirements file: $FILE_PATH"
             pip install -r "$FILE_PATH"
+            # Loop through and process every notebook in the same directory.
             for nb in "$DIR_PATH"/*.ipynb; do
-              echo "Executing and validating $nb"
+              echo "Executing and validating notebook: $nb"
               jupyter nbconvert --execute --to notebook --inplace "$nb"
               pytest --nbval "$nb"
             done
