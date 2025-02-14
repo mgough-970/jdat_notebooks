@@ -42,7 +42,7 @@ jobs:
               echo "No requirements.txt found in $DIR_PATH."
             fi
             # Execute the notebook.
-            jupyter nbconvert --execute --to notebook --inplace "$FILE_PATH"
+            jupyter nbconvert --execute --to html --inplace "$FILE_PATH"
             # Validate the executed notebook.
             pytest --nbval "$FILE_PATH"
           
@@ -52,7 +52,7 @@ jobs:
             # Loop through and process every notebook in the same directory.
             for nb in "$DIR_PATH"/*.ipynb; do
               echo "Executing and validating notebook: $nb"
-              jupyter nbconvert --execute --to notebook --inplace "$nb"
+              jupyter nbconvert --execute --to html --inplace "$nb"
               pytest --nbval "$nb"
             done
           
