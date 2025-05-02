@@ -9,7 +9,7 @@ The ``jdat_notebooks`` repository contains notebooks illustrating workflows for 
 
 ## Summary and Description
 
-The following [page](https://spacetelescope.github.io/jdat_notebooks/) summarizes the material currently available.
+The following [page](https://spacetelescope.github.io/jdat_notebooks/) summarizes the material currently available. 
 
 ## Installation
 
