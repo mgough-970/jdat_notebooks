@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Photometry with JWST - Imviz &#8212; STScI JDAT Notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D46G4HKJY3"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D46G4HKJY3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D46G4HKJY3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/cross_instrument/photometry_extragalactic/imviz';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="STScI JDAT Notebooks - Home"/>
+    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="STScI JDAT Notebooks - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/notebook_development_workflow.html">Notebook Development Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/submitting_notebooks.html">Submitting Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/requirements.html">Requirements file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/notebooks.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/data_files.html">Data Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GitHub Guidelines</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/github_setup.html">GitHub Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/github_workflow.html">GitHub Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/github_pr.html">GitHub PR</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cross-Instrument</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../asdf_example/asdf_example.html">ASDF Example</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../background_estimation_imaging/Imaging_Sky_Background_Estimation.html">Complex 2D Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_model_fitting/specfit_demo_3.html">Composite Model Spectral Fitting</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../rgb_imviz/imviz_rgb_carina.html">RGB images with Imviz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.html">Specviz Simple Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update_pure_parallel_wcs/NIRISS_correct_pure_parallel_WCS.html">Improving Accuracy of WCS of Pure Parallel Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stpsf_examples/stpsf_examples.html">STPSF Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MIRI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_analysis.html">MRS Mstar - Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.html">IFU of YSOs in LMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/MIRI_LRS_spectral_extraction/miri_lrs_advanced_extraction_part1.html">LRS Optimal Spectral Extraction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRCam</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCam/aperture_photometry/NIRCam_Aperture_Photometry_Example.html">Point Source Aperture Photometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCam/NIRCam_photometry/NIRCam_multiband_photometry.html">Extended Aperture Photometry</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCam/NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.html">Cross-Filter PSF Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCam/psf_photometry/NIRCam_PSF_Photometry_Example.html">PSF Photometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCam/NIRCam_wisp_subtraction/nircam_wisp_subtraction.html">NIRCam Wisp Removal</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRISS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_postpipeline/00_Optimal_extraction.html">WFSS Spectra - Optimal Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_postpipeline/01_Combine_and_normalize_1D_spectra.html">WFSS Spectra - Combine and Normalize 1D Spectra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_postpipeline/02_Cross_correlation_template.html">WFSS Spectra - Cross-Correlation Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_postpipeline/03_Spatially_resolved_emission_line_map.html">WFSS Spectra - Emission Line Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_advanced/00_niriss_mast_query_data_setup.html">NIRISS MAST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_advanced/01_niriss_wfss_image2_image3.html">Direct imaging for WFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/NIRISS_WFSS_advanced/02_niriss_wfss_spec2.html">Spec2 pipeline for WFSS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRSpec</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.html">IFU Cube Fitting</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/cube_fitting/cube_fitting.html">IFU Cube Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/ifu_optimal/ifu_optimal.html">IFU Optimal Spectral Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/optimal_extraction/Spectral_Extraction-static.html">MOS Optimal Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/mos_spectroscopy_advanced/MOSspec_advanced.html">MOS Spectroscopy of Extragalactic Field</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.html">BOTS Time Series Observations</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/galaxy_redshift/redshift_fitting.html">Redshift and Template Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/NIRSpec_NSClean/FS_NSClean_example.html">FS Products with NSClean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/NIRSpec_NSClean/IFU_NSClean_example.html">IFU Products with NSClean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/NIRSpec_NSClean/MOS_NSClean_example.html">MOS Products with NSClean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSpec/NIRSpec_NSClean/BOTS_NSClean_example.html">BOTS Products with NSClean</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jdat_notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jdat_notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/cross_instrument/photometry_extragalactic/imviz.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/cross_instrument/photometry_extragalactic/imviz.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Photometry with JWST - Imviz</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-overview">Tutorial Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-imviz">Initialize Imviz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-by-wcs">Linking by WCS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-image-display-options">Modifying Image Display Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-catalogs">Loading Catalogs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-regions">Loading Regions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-instrument-footprints">Load instrument footprints</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aperture-photometry">Aperture photometry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-loading-regions">Creating and loading regions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Aperture Photometry</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
+<p><img alt="title" src="https://github.com/STScI-MIRI/MRS-ExampleNB/raw/main/assets/banner1.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="photometry-with-jwst-imviz">
+<h1>Photometry with JWST - Imviz<a class="headerlink" href="#photometry-with-jwst-imviz" title="Link to this heading">#</a></h1>
+<p>Author: Camilla Pacifici, Space Telescope Science Institute (adapting notebook by Clare Shanahan)<br>
+Date last modified: 2025-02-27</p>
+<section id="tutorial-overview">
+<h2>Tutorial Overview<a class="headerlink" href="#tutorial-overview" title="Link to this heading">#</a></h2>
+<p>This tutorial will demonstrate how to use <a class="reference external" href="https://jdaviz.readthedocs.io/en/latest/imviz/index.html">Imviz</a> to support a photometry workflow.</p>
+<ol class="arabic simple">
+<li><p>Start Imviz and load data.</p></li>
+<li><p>Setting display options.</p></li>
+<li><p>Aligning images by WCS.</p></li>
+<li><p>Load catalog of sources from the interface and from the notebook.</p></li>
+<li><p>Load footprints.</p></li>
+<li><p>Select a source and do aperture photometry.</p></li>
+</ol>
+<p>The first half of the tutorial will show you how to perform these tasks in the interface. In the second part, we will see how the same tasks can be performed with code in the notebook.</p>
+</section>
+<section id="import-packages">
+<h2>Import packages<a class="headerlink" href="#import-packages" title="Link to this heading">#</a></h2>
+<p>First, import astroquery for downloading the data, jdaviz, and a few astropy tools.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.mast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Observations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">jdaviz</span><span class="w"> </span><span class="kn">import</span> <span class="n">Imviz</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">QTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">regions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Regions</span><span class="p">,</span> <span class="n">CircleSkyRegion</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">download_files</span><span class="p">(</span><span class="n">files_to_download</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download a list of files from MAST.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    files_to_download : list</span>
+<span class="sd">        List of filenames</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files_to_download</span><span class="p">:</span>
+        <span class="c1"># Check if the file already exists in the current working directory</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> already exists. Skipping download.&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">cal_uri</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;mast:HLSP/ceers/nircam/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">.gz&#39;</span>
+        <span class="n">Observations</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">cal_uri</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gunzip&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="s1">&#39;.gz&#39;</span><span class="p">]</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="initialize-imviz">
+<h2>Initialize Imviz<a class="headerlink" href="#initialize-imviz" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imviz</span> <span class="o">=</span> <span class="n">Imviz</span><span class="p">()</span>
+<span class="n">imviz</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h2>
+<p>Imviz can ingest FITS files, ASDF files, or numpy arrays (see documentation for <a class="reference external" href="https://jdaviz.readthedocs.io/en/stable/imviz/import_data.html">importing data</a>). Here, we will work with standard FITS files provided by the <a class="reference external" href="https://ceers.github.io/">ERS CEERS team</a> as high level data products.</p>
+<p>Imviz can read either a file path or directly a URI from MAST. Although these data products are available in MAST, we will pull them from a shared space in the platform where they have already being downloaded so we do not have to wait for the download to happen. These files are pretty big!</p>
+<p>We will work with four images of the same field in four different filters (F115W, F200W, F356W, and F444W) obtained with the NIRCam instrument on JWST.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hlsp_ceers_jwst_nircam_nircam2_f115w_v0.5_i2d.fits&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;hlsp_ceers_jwst_nircam_nircam2_f200w_v0.5_i2d.fits&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;hlsp_ceers_jwst_nircam_nircam2_f356w_v0.5_i2d.fits&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;hlsp_ceers_jwst_nircam_nircam2_f444w_v0.5_i2d.fits&#39;</span><span class="p">]</span>
+
+<span class="n">download_files</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">imviz</span><span class="o">.</span><span class="n">batch_load</span><span class="p">():</span>  <span class="c1"># not necessary, but this context manager makes loading multiple files more efficient          </span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">imviz</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The datasets (given default labels ‘A’, ‘B’, ‘C’, and ‘D’) are loaded into the same viewer. They appear in the data menu on the right hand side. You can select/deselect loaded data to display, remove/re-add data from the viewer, and delete loaded data from the app. To blink between images, press the ‘b’ key (note that blinking will de-select non active layers).</p>
+<section id="linking-by-wcs">
+<h3>Linking by WCS<a class="headerlink" href="#linking-by-wcs" title="Link to this heading">#</a></h3>
+<p>By default, images are pixel linked when loaded. We can link them by WCS in the ‘Orientation’ plugin. This is important for catalog functionality. We can also access the Orientation plugin in coding.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plg_orient</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Orientation&#39;</span><span class="p">]</span>
+<span class="n">plg_orient</span><span class="o">.</span><span class="n">align_by</span> <span class="o">=</span> <span class="s2">&quot;WCS&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modifying-image-display-options">
+<h2>Modifying Image Display Options<a class="headerlink" href="#modifying-image-display-options" title="Link to this heading">#</a></h2>
+<p>Now, we will modify some of the display options to better suit our data. For the live demo, we will do this in the UI in the ‘Plot Options’ plugin by modifying the image stretch from linear to logarithmic, and setting vmax to a more appropriate value. We will make use of ‘layer multiselect’ to apply these options to all images at the same time, but you can set different display options for each image independently as well. The following cell accomplishes the same task from the API.</p>
+<p>First, we can check what choices are available for two example options and what is currently set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plg_plot</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Plot Options&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">plg_plot</span><span class="o">.</span><span class="n">stretch_function</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plg_plot</span><span class="o">.</span><span class="n">stretch_function</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plg_plot</span><span class="o">.</span><span class="n">image_colormap</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plg_plot</span><span class="o">.</span><span class="n">image_colormap</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following code is the API equivalent to the series of UI clicks we will do in the live demo</span>
+<span class="c1"># get the &#39;Plot Options&#39; plugin</span>
+<span class="n">plg_plot</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Plot Options&#39;</span><span class="p">]</span>
+
+<span class="c1"># enable mutiselect so our chosen options are applied to all images</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">multiselect</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">select_all</span><span class="p">()</span>
+
+<span class="c1"># switch stretch function from default linear to log</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">stretch_function</span> <span class="o">=</span> <span class="s1">&#39;Logarithmic&#39;</span>
+
+<span class="c1"># use the 99.5% stretch function preset</span>
+<span class="c1"># plg_plot.stretch_preset = &#39;99.5%&#39;</span>
+
+<span class="c1"># increase vmax to a more suitable value</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">stretch_vmax</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">stretch_vmin</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we know how to set our own plot options, let’s use one of the RGB presets, just for fun. This will apply preset color, stretch, and opacity settings to each layer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plg_plot</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Plot Options&#39;</span><span class="p">]</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">image_color_mode</span> <span class="o">=</span> <span class="s1">&#39;Color&#39;</span>
+<span class="n">plg_plot</span><span class="o">.</span><span class="n">apply_RGB_presets</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-catalogs">
+<h2>Loading Catalogs<a class="headerlink" href="#loading-catalogs" title="Link to this heading">#</a></h2>
+<p>SDSS and Gaia catalogs can be loaded directly from jdaviz (with more catalog support planned in the future). Additionally, you can load your own catalog into the application.</p>
+<p>We will use a portion of one of the catalogs generated in the Photutils demo. The <a class="reference external" href="https://jdaviz.readthedocs.io/en/stable/imviz/import_data.html#importing-catalogs-via-the-api">Catalog Search plugin documentation</a> explains how the file needs to be formatted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will need the catalog later so we load it here</span>
+<span class="n">catalog_file</span> <span class="o">=</span> <span class="s1">&#39;photutils_cat.ecsv&#39;</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">catalog_file</span><span class="p">)</span>
+<span class="c1"># cat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plg_cat</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Catalog Search&#39;</span><span class="p">]</span>
+
+<span class="c1"># Import the catalog</span>
+<span class="n">plg_cat</span><span class="o">.</span><span class="n">import_catalog</span><span class="p">(</span><span class="n">catalog_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-regions">
+<h2>Loading Regions<a class="headerlink" href="#loading-regions" title="Link to this heading">#</a></h2>
+<p>Regions can also be loaded either as <code class="docutils literal notranslate"><span class="pre">Subsets</span></code> or as <code class="docutils literal notranslate"><span class="pre">Footprints</span></code>. Subsets are used for analysis and are linked to the datasets so they take some memory. Footprints are just for visual purposes and are much lighter on the tool. Here we load regions created in the Photutils demo as Footprints using the <a class="reference external" href="https://jdaviz.readthedocs.io/en/stable/imviz/plugins.html#footprints">Footprint plugin</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the regions file</span>
+<span class="n">region_file</span> <span class="o">=</span> <span class="s1">&#39;kron_apertures.reg&#39;</span>
+<span class="c1"># Open it with the Regions package</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="n">Regions</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">region_file</span><span class="p">)</span>
+
+<span class="c1"># Open the footprint plugin</span>
+<span class="n">plg_fprint</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Footprints&#39;</span><span class="p">]</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">open_in_tray</span><span class="p">()</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">keep_active</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Add the desired overlay</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">add_overlay</span><span class="p">(</span><span class="s1">&#39;Kron regions&#39;</span><span class="p">)</span>
+
+<span class="c1"># Import the regions</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">import_region</span><span class="p">(</span><span class="n">regions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-instrument-footprints">
+<h3>Load instrument footprints<a class="headerlink" href="#load-instrument-footprints" title="Link to this heading">#</a></h3>
+<p>The Footprint plugin can also be used to load Instruments footprints from JWST and Roman.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the footprint plugin</span>
+<span class="n">plg_fprint</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Footprints&#39;</span><span class="p">]</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">open_in_tray</span><span class="p">()</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">keep_active</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Add a NIRSpec overlay</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">add_overlay</span><span class="p">(</span><span class="s1">&#39;nirspec&#39;</span><span class="p">)</span>
+
+<span class="c1"># Choose the preset footprint for NIRSpec</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">preset</span> <span class="o">=</span> <span class="s1">&#39;NIRSpec&#39;</span>
+
+<span class="c1"># Change the center and angle of the footprint</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">ra</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s1">&#39;sky_centroid&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">value</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s1">&#39;sky_centroid&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">value</span>
+<span class="n">plg_fprint</span><span class="o">.</span><span class="n">pa</span> <span class="o">=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="aperture-photometry">
+<h2>Aperture photometry<a class="headerlink" href="#aperture-photometry" title="Link to this heading">#</a></h2>
+<p>We can do <a class="reference external" href="https://jdaviz.readthedocs.io/en/stable/imviz/plugins.html#aperture-photometry">Aperture Photometry</a> in Imviz. We will do it on a single source selected from the catalog. We can draw a circular <code class="docutils literal notranslate"><span class="pre">subset</span></code> near the souce, then use <code class="docutils literal notranslate"><span class="pre">recenter</span></code> to centroid the position a little better.</p>
+<section id="creating-and-loading-regions">
+<h3>Creating and loading regions<a class="headerlink" href="#creating-and-loading-regions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the &#39;Subsets Tools&#39; plugin where we can create and interact with spatial regions in imviz</span>
+<span class="n">plg_subset</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Subset Tools&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create a circular region around a random source</span>
+<span class="n">circular_region</span> <span class="o">=</span> <span class="n">CircleSkyRegion</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">cat</span><span class="p">[</span><span class="s1">&#39;sky_centroid&#39;</span><span class="p">][</span><span class="mi">250</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span>
+<span class="n">plg_subset</span><span class="o">.</span><span class="n">import_region</span><span class="p">(</span><span class="n">circular_region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Aperture Photometry<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>With a subset created and placed on one of the sources in the image, we can use the Aperture Photometry plugin to do some analysis. We can make use of ‘batch mode’ to get photometry for all loaded images using the same subset (which is useful when images are well aligned). The API for this is not exposed yet, so we will do it only in UI and we will just get the table of results our here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the plugin</span>
+<span class="n">aperture_photometry</span> <span class="o">=</span> <span class="n">imviz</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;Aperture Photometry&#39;</span><span class="p">]</span>
+
+<span class="c1"># export the table of results</span>
+<span class="n">aperture_photometry</span><span class="o">.</span><span class="n">export_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/cross_instrument/photometry_extragalactic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-overview">Tutorial Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-imviz">Initialize Imviz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-by-wcs">Linking by WCS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-image-display-options">Modifying Image Display Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-catalogs">Loading Catalogs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-regions">Loading Regions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-instrument-footprints">Load instrument footprints</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aperture-photometry">Aperture photometry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-loading-regions">Creating and loading regions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Aperture Photometry</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By STScI
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
