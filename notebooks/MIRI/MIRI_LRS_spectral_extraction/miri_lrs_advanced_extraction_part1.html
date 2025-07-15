@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
@@ -496,13 +496,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="miri-lrs-slit-spectroscopy-spectral-extraction-using-the-jwst-pipeline">
+  <section class="tex2jax_ignore mathjax_ignore" id="miri-lrs-slit-spectroscopy-spectral-extraction-using-the-jwst-pipeline">
 <h1>MIRI LRS Slit Spectroscopy: Spectral Extraction using the JWST Pipeline<a class="headerlink" href="#miri-lrs-slit-spectroscopy-spectral-extraction-using-the-jwst-pipeline" title="Link to this heading">#</a></h1>
 <p>July 2023</p>
 <p><strong>Use case:</strong> Spectral extraction of slit spectra with the JWST calibration pipeline.<br>
@@ -573,6 +567,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS cache location: /home/runner/crds_cache
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -597,6 +596,11 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">crds</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using JWST calibration pipeline version </span><span class="si">{</span><span class="n">jwst</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using JWST calibration pipeline version 1.19.0
 </pre></div>
 </div>
 </div>
@@ -641,6 +645,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/65abc2f2f802d8aa34c4da7510d670253b02995a8d5f6ff47e0352e0fd27094f.png" src="../../../_images/65abc2f2f802d8aa34c4da7510d670253b02995a8d5f6ff47e0352e0fd27094f.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,6 +664,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/fc9ebcfbf0add65cb2b38c54b6344cd1f3a37f0d457368cd775feb45bd27c06d.png" src="../../../_images/fc9ebcfbf0add65cb2b38c54b6344cd1f3a37f0d457368cd775feb45bd27c06d.png" />
+</div>
 </div>
 </section>
 <section id="the-spectral-extraction-reference-file">
@@ -670,8 +680,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Spectral extraction reference file used: crds://jwst_miri_extract1d_0005.json
+</pre></div>
 </div>
-<div class="cell docutils container">
+</div>
+</div>
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;data/jw02072-o001_t010_miri_p750l_x1d_1089.fits&#39;</span>
 <span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdul</span><span class="p">:</span>
@@ -683,6 +698,13 @@ document.write(`
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Settings for SLIT data: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1dref_default</span><span class="p">[</span><span class="s1">&#39;apertures&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Settings for SLITLESS data: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1dref_default</span><span class="p">[</span><span class="s1">&#39;apertures&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Settings for SLIT data: {&#39;id&#39;: &#39;MIR_LRS-FIXEDSLIT&#39;, &#39;region_type&#39;: &#39;target&#39;, &#39;bkg_order&#39;: 0, &#39;dispaxis&#39;: 2, &#39;xstart&#39;: 27, &#39;xstop&#39;: 34, &#39;use_source_posn&#39;: False}
+  
+Settings for SLITLESS data: {&#39;id&#39;: &#39;MIR_LRS-SLITLESS&#39;, &#39;region_type&#39;: &#39;target&#39;, &#39;bkg_order&#39;: 0, &#39;dispaxis&#39;: 2, &#39;xstart&#39;: 30, &#39;xstop&#39;: 41, &#39;use_source_posn&#39;: False}
 </pre></div>
 </div>
 </div>
@@ -719,6 +741,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ec982db39dc5b1a2f09e90708e1e8bb8ae47f2987d96f0a60e06ed53111ca035.png" src="../../../_images/ec982db39dc5b1a2f09e90708e1e8bb8ae47f2987d96f0a60e06ed53111ca035.png" />
+</div>
 </div>
 </section>
 <section id="example-1-changing-the-extraction-width">
@@ -739,6 +764,11 @@ document.write(`
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;x1d_reffile_example1.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsrefout</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">x1dref_ex1</span><span class="p">,</span> <span class="n">jsrefout</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New xstart, xstop values = 25,36
 </pre></div>
 </div>
 </div>
@@ -767,6 +797,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/16487e5d4d45c95c2f12a27b43a641f4f2fb5b11d4126ed8b31e26fe1c9dfd96.png" src="../../../_images/16487e5d4d45c95c2f12a27b43a641f4f2fb5b11d4126ed8b31e26fe1c9dfd96.png" />
+</div>
 </div>
 <p>Next we run the spectral extraction step, using this modified reference file. Note: when a step is run individually the file name suffix is different from when we run the Spec3Pipeline in its entirety. The extracted spectrum will now have <code class="docutils literal notranslate"><span class="pre">extract1dstep.fits</span></code> in the filename. The custom parameters we pass to the step call:</p>
 <ul class="simple">
@@ -774,10 +807,99 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">override_extract1d</span></code>: here we provide the name of the custom reference file we created above</p></li>
 </ul>
 <p>We will plot the output against the default extracted product. We expect the spectra to be almost identical; differences can be apparent at the longer wavelengths as our path loss correction is less well calibrated in this low SNR region.</p>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp3_ex1</span> <span class="o">=</span> <span class="n">Extract1dStep</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">l3_s2d</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;data/&#39;</span><span class="p">,</span> 
                              <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;lrs_slit_extract_example1&#39;</span><span class="p">,</span> <span class="n">override_extract1d</span><span class="o">=</span><span class="s1">&#39;x1d_reffile_example1.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:14,930 - stpipe.Extract1dStep - INFO - Extract1dStep instance created.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,032 - stpipe.Extract1dStep - INFO - Step Extract1dStep running with args (&lt;SlitModel(388, 63) from jw02072-o001_t010_miri_p750l_s2d_1089.fits&gt;,).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,036 - stpipe.Extract1dStep - INFO - Step Extract1dStep parameters are:
+  pre_hooks: []
+  post_hooks: []
+  output_file: /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/lrs_slit_extract_example1
+  output_dir: data/
+  output_ext: .fits
+  output_use_model: False
+  output_use_index: True
+  save_results: False
+  skip: False
+  suffix: None
+  search_output_file: True
+  input_dir: &#39;&#39;
+  subtract_background: None
+  apply_apcorr: True
+  extraction_type: box
+  use_source_posn: None
+  position_offset: 0.0
+  model_nod_pair: True
+  optimize_psf_location: True
+  smoothing_length: None
+  bkg_fit: None
+  bkg_order: None
+  log_increment: 50
+  save_profile: False
+  save_scene_model: False
+  save_residual_image: False
+  center_xy: None
+  ifu_autocen: False
+  bkg_sigma_clip: 3.0
+  ifu_rfcorr: True
+  ifu_set_srctype: None
+  ifu_rscale: None
+  ifu_covar_scale: 1.0
+  soss_atoca: True
+  soss_threshold: 0.01
+  soss_n_os: 2
+  soss_wave_grid_in: None
+  soss_wave_grid_out: None
+  soss_estimate: None
+  soss_rtol: 0.0001
+  soss_max_grid_size: 20000
+  soss_tikfac: None
+  soss_width: 40.0
+  soss_bad_pix: masking
+  soss_modelname: None
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,043 - stpipe.Extract1dStep - INFO - Using EXTRACT1D reference file /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/x1d_reffile_example1.json
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,045 - stpipe.Extract1dStep - INFO - Using APCORR file /home/runner/crds_cache/references/jwst/miri/jwst_miri_apcorr_0007.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,047 - CRDS - ERROR -  Error determining best reference for &#39;psf&#39;  =   Unknown reference type &#39;psf&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,081 - jwst.extract_1d.extract - WARNING - spectral_order is None; using 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,081 - jwst.extract_1d.extract - INFO - Processing spectral order 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,090 - jwst.extract_1d.extract - INFO - Aperture start/stop: 25.00 -&gt; 36.00 (inclusive)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,092 - jwst.extract_1d.extract - INFO - Creating aperture correction.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,337 - jwst.stpipe.core - INFO - Results used CRDS context: jwst_1089.pmap
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,407 - stpipe.Extract1dStep - INFO - Saved model in data/lrs_slit_extract_example1_extract1dstep.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,408 - stpipe.Extract1dStep - INFO - Step Extract1dStep done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,408 - jwst.stpipe.core - INFO - Results used jwst version: 1.19.0
 </pre></div>
 </div>
 </div>
@@ -785,6 +907,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sp3_ex1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;MultiSpecModel from lrs_slit_extract_example1_extract1dstep.fits&gt;
 </pre></div>
 </div>
 </div>
@@ -802,6 +929,9 @@ document.write(`
 <span class="n">fig5</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d9666f7a6c7efddd626a17f71b8a178cee0e54fbc23f45c130a60226b3411c00.png" src="../../../_images/d9666f7a6c7efddd626a17f71b8a178cee0e54fbc23f45c130a60226b3411c00.png" />
 </div>
 </div>
 </section>
@@ -851,11 +981,103 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/734b0f28e46e61a34df33b7deb67ad60df7923e67e42868b2bd2da0718b22862.png" src="../../../_images/734b0f28e46e61a34df33b7deb67ad60df7923e67e42868b2bd2da0718b22862.png" />
 </div>
-<div class="cell docutils container">
+</div>
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp2_ex2</span> <span class="o">=</span> <span class="n">Extract1dStep</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">l2_s2d_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;data/&#39;</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;lrs_slit_extract_example2&#39;</span><span class="p">,</span>
                              <span class="n">override_extract1d</span><span class="o">=</span><span class="s1">&#39;x1d_reffile_example2.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,828 - stpipe.Extract1dStep - INFO - Extract1dStep instance created.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,936 - stpipe.Extract1dStep - INFO - Step Extract1dStep running with args (&#39;data/jw02072001001_06101_00001_mirimage_s2d.fits&#39;,).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:15,940 - stpipe.Extract1dStep - INFO - Step Extract1dStep parameters are:
+  pre_hooks: []
+  post_hooks: []
+  output_file: /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/lrs_slit_extract_example2
+  output_dir: data/
+  output_ext: .fits
+  output_use_model: False
+  output_use_index: True
+  save_results: False
+  skip: False
+  suffix: None
+  search_output_file: True
+  input_dir: &#39;&#39;
+  subtract_background: None
+  apply_apcorr: True
+  extraction_type: box
+  use_source_posn: None
+  position_offset: 0.0
+  model_nod_pair: True
+  optimize_psf_location: True
+  smoothing_length: None
+  bkg_fit: None
+  bkg_order: None
+  log_increment: 50
+  save_profile: False
+  save_scene_model: False
+  save_residual_image: False
+  center_xy: None
+  ifu_autocen: False
+  bkg_sigma_clip: 3.0
+  ifu_rfcorr: True
+  ifu_set_srctype: None
+  ifu_rscale: None
+  ifu_covar_scale: 1.0
+  soss_atoca: True
+  soss_threshold: 0.01
+  soss_n_os: 2
+  soss_wave_grid_in: None
+  soss_wave_grid_out: None
+  soss_estimate: None
+  soss_rtol: 0.0001
+  soss_max_grid_size: 20000
+  soss_tikfac: None
+  soss_width: 40.0
+  soss_bad_pix: masking
+  soss_modelname: None
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,000 - stpipe.Extract1dStep - INFO - Using EXTRACT1D reference file /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/x1d_reffile_example2.json
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,002 - stpipe.Extract1dStep - INFO - Using APCORR file /home/runner/crds_cache/references/jwst/miri/jwst_miri_apcorr_0007.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,005 - CRDS - ERROR -  Error determining best reference for &#39;psf&#39;  =   Unknown reference type &#39;psf&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,034 - jwst.extract_1d.extract - WARNING - spectral_order is None; using 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,035 - jwst.extract_1d.extract - INFO - Processing spectral order 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,042 - jwst.extract_1d.extract - INFO - Aperture start/stop: 9.00 -&gt; 17.00 (inclusive)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,044 - jwst.extract_1d.extract - INFO - Creating aperture correction.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,279 - jwst.stpipe.core - INFO - Results used CRDS context: jwst_1089.pmap
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,346 - stpipe.Extract1dStep - INFO - Saved model in data/lrs_slit_extract_example2_extract1dstep.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,346 - stpipe.Extract1dStep - INFO - Step Extract1dStep done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,347 - jwst.stpipe.core - INFO - Results used jwst version: 1.19.0
 </pre></div>
 </div>
 </div>
@@ -874,6 +1096,9 @@ document.write(`
 <span class="n">fig7</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d5a55b73072d2de65b52d110a7ed6d33480a1fb895504f7639a28fe9e2450441.png" src="../../../_images/d5a55b73072d2de65b52d110a7ed6d33480a1fb895504f7639a28fe9e2450441.png" />
 </div>
 </div>
 </section>
@@ -907,6 +1132,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ec6c9661b9afaa01ebb853ef5052f500be24c03d8bf9310b55423c3fc633d060.png" src="../../../_images/ec6c9661b9afaa01ebb853ef5052f500be24c03d8bf9310b55423c3fc633d060.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -924,10 +1152,105 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp2_ex3</span> <span class="o">=</span> <span class="n">Extract1dStep</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">l2_s2d_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;data/&#39;</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;lrs_slit_extract_example3&#39;</span><span class="p">,</span>
                              <span class="n">override_extract1d</span><span class="o">=</span><span class="s1">&#39;x1d_reffile_example3.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,625 - stpipe.Extract1dStep - INFO - Extract1dStep instance created.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,736 - stpipe.Extract1dStep - INFO - Step Extract1dStep running with args (&#39;data/jw02072001001_06101_00001_mirimage_s2d.fits&#39;,).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,740 - stpipe.Extract1dStep - INFO - Step Extract1dStep parameters are:
+  pre_hooks: []
+  post_hooks: []
+  output_file: /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/lrs_slit_extract_example3
+  output_dir: data/
+  output_ext: .fits
+  output_use_model: False
+  output_use_index: True
+  save_results: False
+  skip: False
+  suffix: None
+  search_output_file: True
+  input_dir: &#39;&#39;
+  subtract_background: None
+  apply_apcorr: True
+  extraction_type: box
+  use_source_posn: None
+  position_offset: 0.0
+  model_nod_pair: True
+  optimize_psf_location: True
+  smoothing_length: None
+  bkg_fit: None
+  bkg_order: None
+  log_increment: 50
+  save_profile: False
+  save_scene_model: False
+  save_residual_image: False
+  center_xy: None
+  ifu_autocen: False
+  bkg_sigma_clip: 3.0
+  ifu_rfcorr: True
+  ifu_set_srctype: None
+  ifu_rscale: None
+  ifu_covar_scale: 1.0
+  soss_atoca: True
+  soss_threshold: 0.01
+  soss_n_os: 2
+  soss_wave_grid_in: None
+  soss_wave_grid_out: None
+  soss_estimate: None
+  soss_rtol: 0.0001
+  soss_max_grid_size: 20000
+  soss_tikfac: None
+  soss_width: 40.0
+  soss_bad_pix: masking
+  soss_modelname: None
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,799 - stpipe.Extract1dStep - INFO - Using EXTRACT1D reference file /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/x1d_reffile_example3.json
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,801 - stpipe.Extract1dStep - INFO - Using APCORR file /home/runner/crds_cache/references/jwst/miri/jwst_miri_apcorr_0007.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,803 - CRDS - ERROR -  Error determining best reference for &#39;psf&#39;  =   Unknown reference type &#39;psf&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,832 - jwst.extract_1d.extract - WARNING - spectral_order is None; using 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,833 - jwst.extract_1d.extract - INFO - Processing spectral order 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,839 - jwst.extract_1d.extract - INFO - Aperture start/stop: 9.00 -&gt; 17.00 (inclusive)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,841 - jwst.extract_1d.extract - INFO - Mean aperture start/stop from bkg_coeff: 1.00 -&gt; 4.00 (inclusive)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,842 - jwst.extract_1d.extract - INFO - Mean aperture start/stop from bkg_coeff: 39.00 -&gt; 43.00 (inclusive)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:16,844 - jwst.extract_1d.extract - INFO - Creating aperture correction.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,092 - jwst.stpipe.core - INFO - Results used CRDS context: jwst_1089.pmap
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,158 - stpipe.Extract1dStep - INFO - Saved model in data/lrs_slit_extract_example3_extract1dstep.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,158 - stpipe.Extract1dStep - INFO - Step Extract1dStep done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,159 - jwst.stpipe.core - INFO - Results used jwst version: 1.19.0
 </pre></div>
 </div>
 </div>
@@ -950,6 +1273,9 @@ document.write(`
 <span class="n">fig9</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/82be372e3265b2d6b6f65a398d5bc42e5eb45e3fdbed83a9eb036f60807332e3.png" src="../../../_images/82be372e3265b2d6b6f65a398d5bc42e5eb45e3fdbed83a9eb036f60807332e3.png" />
 </div>
 </div>
 </section>
@@ -998,6 +1324,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: Linear1D
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Parameters:
+          slope            intercept    
+    ------------------ -----------------
+    0.2579519802996102 2.445618715370405
+Parameter(&#39;slope&#39;, value=0.2579519802996102) Parameter(&#39;intercept&#39;, value=2.445618715370405)
+</pre></div>
+</div>
+<img alt="../../../_images/2e537ba381bd34566283780e3a875ab865f13358dd7319931da959cfa43ad597.png" src="../../../_images/2e537ba381bd34566283780e3a875ab865f13358dd7319931da959cfa43ad597.png" />
+</div>
 </div>
 <p>The above polynomial defines the relationship between wavelength and the number of pixels to extract. To ensure that the extractio location is centred on the location of the spectrum, we add to the intercept value the central location of the trace, which is at column 30.5.</p>
 <p>In the next cell, we provide these parameters to the <code class="docutils literal notranslate"><span class="pre">src_coeff</span></code> parameter in the extraction reference file. <strong>Note: The <code class="docutils literal notranslate"><span class="pre">src_coeff</span></code> parameter takes precedence over the <code class="docutils literal notranslate"><span class="pre">xstart</span></code> and <code class="docutils literal notranslate"><span class="pre">xstop</span></code> parameters if all 3 are present; for clarity we remove the latter from our reference file.</strong></p>
@@ -1019,10 +1359,99 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp3_ex4</span> <span class="o">=</span> <span class="n">Extract1dStep</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">l3_s2d</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;data/&#39;</span><span class="p">,</span> 
                              <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;lrs_slit_extract_example4&#39;</span><span class="p">,</span> <span class="n">override_extract1d</span><span class="o">=</span><span class="s1">&#39;x1d_reffile_example4.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,468 - stpipe.Extract1dStep - INFO - Extract1dStep instance created.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,584 - stpipe.Extract1dStep - INFO - Step Extract1dStep running with args (&lt;SlitModel(388, 63) from jw02072-o001_t010_miri_p750l_s2d_1089.fits&gt;,).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,588 - stpipe.Extract1dStep - INFO - Step Extract1dStep parameters are:
+  pre_hooks: []
+  post_hooks: []
+  output_file: /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/lrs_slit_extract_example4
+  output_dir: data/
+  output_ext: .fits
+  output_use_model: False
+  output_use_index: True
+  save_results: False
+  skip: False
+  suffix: None
+  search_output_file: True
+  input_dir: &#39;&#39;
+  subtract_background: None
+  apply_apcorr: True
+  extraction_type: box
+  use_source_posn: None
+  position_offset: 0.0
+  model_nod_pair: True
+  optimize_psf_location: True
+  smoothing_length: None
+  bkg_fit: None
+  bkg_order: None
+  log_increment: 50
+  save_profile: False
+  save_scene_model: False
+  save_residual_image: False
+  center_xy: None
+  ifu_autocen: False
+  bkg_sigma_clip: 3.0
+  ifu_rfcorr: True
+  ifu_set_srctype: None
+  ifu_rscale: None
+  ifu_covar_scale: 1.0
+  soss_atoca: True
+  soss_threshold: 0.01
+  soss_n_os: 2
+  soss_wave_grid_in: None
+  soss_wave_grid_out: None
+  soss_estimate: None
+  soss_rtol: 0.0001
+  soss_max_grid_size: 20000
+  soss_tikfac: None
+  soss_width: 40.0
+  soss_bad_pix: masking
+  soss_modelname: None
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,595 - stpipe.Extract1dStep - INFO - Using EXTRACT1D reference file /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/MIRI/MIRI_LRS_spectral_extraction/x1d_reffile_example4.json
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,598 - stpipe.Extract1dStep - INFO - Using APCORR file /home/runner/crds_cache/references/jwst/miri/jwst_miri_apcorr_0007.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,600 - CRDS - ERROR -  Error determining best reference for &#39;psf&#39;  =   Unknown reference type &#39;psf&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,629 - jwst.extract_1d.extract - WARNING - spectral_order is None; using 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,630 - jwst.extract_1d.extract - INFO - Processing spectral order 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,638 - jwst.extract_1d.extract - INFO - Mean aperture start/stop from src_coeff: 25.90 -&gt; 35.10 (inclusive)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,640 - jwst.extract_1d.extract - INFO - Creating aperture correction.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,884 - jwst.stpipe.core - INFO - Results used CRDS context: jwst_1089.pmap
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,949 - stpipe.Extract1dStep - INFO - Saved model in data/lrs_slit_extract_example4_extract1dstep.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,950 - stpipe.Extract1dStep - INFO - Step Extract1dStep done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-15 17:38:17,950 - jwst.stpipe.core - INFO - Results used jwst version: 1.19.0
 </pre></div>
 </div>
 </div>
@@ -1041,6 +1470,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/146be7839f4859399a7633aac9e9539fb0f5a85addda77342ad95b7852e0d2a6.png" src="../../../_images/146be7839f4859399a7633aac9e9539fb0f5a85addda77342ad95b7852e0d2a6.png" />
+</div>
 </div>
 <p>The output spectrum also contains a reference to the number of pixels used for the extraction as a function of wavelength. Let’s visualize that too.</p>
 <div class="cell docutils container">
@@ -1056,6 +1488,9 @@ document.write(`
 <span class="n">fig11</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/772cffa72ab768f884bc45fb23f26f6219fa5b26114683c93eca3c5a9ba555cb.png" src="../../../_images/772cffa72ab768f884bc45fb23f26f6219fa5b26114683c93eca3c5a9ba555cb.png" />
 </div>
 </div>
 </section>

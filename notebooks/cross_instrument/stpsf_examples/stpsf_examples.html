@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
@@ -507,13 +507,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="jwst-using-wavefronts-measured-on-orbit">
+  <section class="tex2jax_ignore mathjax_ignore" id="jwst-using-wavefronts-measured-on-orbit">
 <h1>JWST Using Wavefronts Measured On Orbit<a class="headerlink" href="#jwst-using-wavefronts-measured-on-orbit" title="Link to this heading">#</a></h1>
 <p>STPSF, formerly knows as WebbPSF, includes code for using the results of in-flight wavefront sensing measurements, by retrieving Optical Path Difference (OPD) files. These can be used to create simulated PSFs appropriate for a given instrument, detector, and time.</p>
 <p>This notebook serves as a reference for how to use STPSF to search for and retrieve an OPD file, and explains the contents of this file. It also shows how to load multiple OPD files and plot changes in the wavefront properties over time. It also contains an example case of using an OPD file to create and subtract a simulated PSF from an in-flight image.</p>
@@ -649,6 +643,26 @@ In any case, there are way to disable any detector effects or to adjust the empi
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAST OPD query around UTC: 2022-07-01T00:00:00.000
+                        MJD: 59761.0
+
+OPD immediately preceding the given datetime:
+	URI:	 mast:JWST/product/R2022063002-NRCA3_FP1-2.fits
+	Date (MJD):	 59759.6628
+	Delta time:	 -1.3372 days
+
+OPD immediately following the given datetime:
+	URI:	 mast:JWST/product/R2022070403-NRCA3_FP1-0.fits
+	Date (MJD):	 59761.5484
+	Delta time:	 0.5484 days
+User requested choosing OPD time closest in time to 2022-07-01T00:00:00.000, which is R2022070403-NRCA3_FP1-0.fits, delta time 0.548 days
+Importing and format-converting OPD from /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/cross_instrument/stpsf_examples/R2022070403-NRCA3_FP1-0.fits
+Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+<img alt="../../../_images/27e64a6db1592344f3d7fa51f46b385d1cc6df1dd6bc2d411be723c14d212bc2.png" src="../../../_images/27e64a6db1592344f3d7fa51f46b385d1cc6df1dd6bc2d411be723c14d212bc2.png" />
+</div>
 </div>
 <ul class="simple">
 <li><p>Upper Left: This is the measured OPD as sensed in NIRCam at “field point 1” which is in the upper left corner of NRCA3, relatively close to the center of the NIRCam module. This observatory total OPD measurement includes both the telescope and NIRCam contributions to the WFE.</p></li>
@@ -675,6 +689,28 @@ In any case, there are way to disable any detector effects or to adjust the empi
         <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">opd</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/cross_instrument/stpsf_examples/R2022070403-NRCA3_FP1-0.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU      23   ()      
+  1  RESULT_PHASE    1 ImageHDU       184   (256, 256)   float32   
+  2  RESULT_PSF    1 ImageHDU        11   (545, 545)   float32   
+  3  EXPECTED      1 ImageHDU        13   (256, 256)   float32   
+  4  PUPIL_MASK    1 ImageHDU        11   (256, 256)   int16   
+  5  RAW_PSF       1 ImageHDU        14   (256, 256)   float32   
+  6  CALC_PSF      1 ImageHDU        12   (546, 546)   float32   
+  7  CALC_AMP      1 ImageHDU        12   (256, 256)   float32   
+  8  HO_PHASE      1 ImageHDU        12   (256, 256)   float32   
+  9  LO_PHASE      1 ImageHDU        12   (256, 256)   float32   
+ 10  RAW_PSF       1 ImageHDU        14   (256, 256)   float32   
+ 11  CALC_PSF      1 ImageHDU        12   (546, 546)   float32   
+ 12  CALC_AMP      1 ImageHDU        12   (256, 256)   float32   
+ 13  HO_PHASE      1 ImageHDU        12   (256, 256)   float32   
+ 14  LO_PHASE      1 ImageHDU        12   (256, 256)   float32   
+</pre></div>
+</div>
+<img alt="../../../_images/a2c4461260c9e3b9e2b468780a352fbde2fd84772a3c5bcf927823d1fefbc453.png" src="../../../_images/a2c4461260c9e3b9e2b468780a352fbde2fd84772a3c5bcf927823d1fefbc453.png" />
 </div>
 </div>
 </section>
@@ -721,6 +757,9 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7173fb3a3267bfcec1b38f92da7df067e257a68025973a3745194978b0354419.png" src="../../../_images/7173fb3a3267bfcec1b38f92da7df067e257a68025973a3745194978b0354419.png" />
+</div>
 </div>
 </section>
 <section id="delta-wavefront-error-around-time-of-observation">
@@ -730,6 +769,18 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stpsf</span><span class="o">.</span><span class="n">trending</span><span class="o">.</span><span class="n">delta_wfe_around_time</span><span class="p">(</span><span class="s1">&#39;2024-05-11 01:50:25.231&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       ...,
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.]], shape=(256, 256), dtype=float32)
+</pre></div>
+</div>
+<img alt="../../../_images/f2eda8c4f73a0752cb6c7c4581a3f16d16b6d4011e9e88a25aa6b4fb654ef361.png" src="../../../_images/f2eda8c4f73a0752cb6c7c4581a3f16d16b6d4011e9e88a25aa6b4fb654ef361.png" />
 </div>
 </div>
 </section>
@@ -782,6 +833,11 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./jw04500-o056_t012_nircam_f212n-wlm8-nrca3_wfscmb-04.fits&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -794,15 +850,53 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting up sim to match jw04500-o056_t012_nircam_f212n-wlm8-nrca3_wfscmb-04.fits
+iterating query, tdelta=3.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAST OPD query around UTC: 2024-07-07T13:31:51.488
+                        MJD: 60498.56379037037
+
+OPD immediately preceding the given datetime:
+	URI:	 mast:JWST/product/O2024070701-NRCA3_FP1-1.fits
+	Date (MJD):	 60498.5637
+	Delta time:	 -0.0001 days
+
+OPD immediately following the given datetime:
+	URI:	 mast:JWST/product/O2024070901-NRCA3_FP1-1.fits
+	Date (MJD):	 60500.6226
+	Delta time:	 2.0588 days
+User requested choosing OPD time closest in time to 2024-07-07T13:31:51.488, which is O2024070701-NRCA3_FP1-1.fits, delta time -0.000 days
+Importing and format-converting OPD from data/stpsf-data/MAST_JWST_WSS_OPDs/O2024070701-NRCA3_FP1-1.fits
+Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Configured simulation instrument for:
+    Instrument: NIRCam
+    Filter: F212N
+    Detector: NRCA3
+    Apername: NRCA3_FULL
+    Det. Pos.: (1024, 1024) 
+    Image plane mask: None
+    Pupil plane mask: WLM8
+    
+</pre></div>
+</div>
+<img alt="../../../_images/12040508f9dc4e118336b8e9bf7b090dd91f378a8ae3b374755ae06f5a9aaacb.png" src="../../../_images/12040508f9dc4e118336b8e9bf7b090dd91f378a8ae3b374755ae06f5a9aaacb.png" />
+</div>
 </div>
 </section>
 <section id="trending-wavefront-changes-over-time">
 <h2>Trending Wavefront Changes over Time<a class="headerlink" href="#trending-wavefront-changes-over-time" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trend_table</span> <span class="o">=</span> <span class="n">stpsf</span><span class="o">.</span><span class="n">trending</span><span class="o">.</span><span class="n">monthly_trending_plot</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/3bf07555fe44534317c33a65f5606e0151ad251abdc43fb12584a08ee8440322.png" src="../../../_images/3bf07555fe44534317c33a65f5606e0151ad251abdc43fb12584a08ee8440322.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -811,6 +905,30 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>QTable length=17</i>
+<table id="table139636995904912" class="table-striped table-bordered table-condensed">
+<thead><tr><th>Date</th><th>Filename</th><th>WFS Type</th><th>RMS WFE (OTE+SI)</th><th>RMS WFE (OTE only)</th><th>EE(2.5 pix)</th><th>EE(10pix)</th></tr></thead>
+<thead><tr><th></th><th></th><th></th><th>nm</th><th>nm</th><th></th><th></th></tr></thead>
+<thead><tr><th>str23</th><th>str29</th><th>str7</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>2024-05-29T20:28:16.000</td><td>R2024053002-NRCA3_FP1-1.fits</td><td>Sensing</td><td>67.3914750239438</td><td>63.37095480426078</td><td>0.6719226329668622</td><td>0.8764040777120373</td></tr>
+<tr><td>2024-06-01T07:23:31.400</td><td>R2024060102-NRCA3_FP1-1.fits</td><td>Sensing</td><td>67.58286840572374</td><td>63.77091225744318</td><td>0.671716224637393</td><td>0.8763351547370711</td></tr>
+<tr><td>2024-06-03T03:45:45.700</td><td>R2024060302-NRCA3_FP1-1.fits</td><td>Sensing</td><td>67.85527338663354</td><td>63.5824560042632</td><td>0.6717277183894746</td><td>0.8763239348265368</td></tr>
+<tr><td>2024-06-05T02:32:29.000</td><td>O2024060501-NRCA3_FP1-1.fits</td><td>Sensing</td><td>67.89438388454889</td><td>63.6531276812743</td><td>0.6717958424990571</td><td>0.8764245973149776</td></tr>
+<tr><td>2024-06-06T18:40:02.000</td><td>O2024060602-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.10348101293754</td><td>63.930358874980925</td><td>0.6715480464724863</td><td>0.8765101726668102</td></tr>
+<tr><td>2024-06-08T10:33:16.100</td><td>O2024060801-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.35284319652993</td><td>64.30054670481503</td><td>0.6712569300298153</td><td>0.8764032913784519</td></tr>
+<tr><td>2024-06-10T00:25:49.700</td><td>O2024061001-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.12892606755149</td><td>64.23481177221457</td><td>0.6712435376220324</td><td>0.8764395816200582</td></tr>
+<tr><td>2024-06-12T17:17:56.200</td><td>O2024061301-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.13602214356894</td><td>64.29193242420946</td><td>0.6711962144562941</td><td>0.8764299998890757</td></tr>
+<tr><td>2024-06-15T02:37:35.900</td><td>O2024061501-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.65781083419657</td><td>64.51686307694685</td><td>0.6710741573631243</td><td>0.8764018632655044</td></tr>
+<tr><td>2024-06-16T20:16:29.500</td><td>O2024061701-NRCA3_FP1-1.fits</td><td>Sensing</td><td>67.77755625455714</td><td>63.6214409814475</td><td>0.6716471649887765</td><td>0.8770141611678653</td></tr>
+<tr><td>2024-06-18T08:42:51.200</td><td>O2024061801-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.22087337229252</td><td>64.30479742513361</td><td>0.6710999994898569</td><td>0.876457100479267</td></tr>
+<tr><td>2024-06-20T18:43:56.200</td><td>O2024062101-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.390468368524</td><td>64.45326019746298</td><td>0.6711954538707969</td><td>0.8764130078787915</td></tr>
+<tr><td>2024-06-23T07:34:47.400</td><td>O2024062301-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.01667326098666</td><td>64.34161990641942</td><td>0.6712244606699806</td><td>0.8764568399289001</td></tr>
+<tr><td>2024-06-24T12:30:24.200</td><td>O2024062401-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.11333031194276</td><td>64.2542535052067</td><td>0.671209854304376</td><td>0.8765185680175227</td></tr>
+<tr><td>2024-06-26T05:34:54.000</td><td>O2024062601-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.29756935101497</td><td>64.86571635421303</td><td>0.670749729019986</td><td>0.8764423226596338</td></tr>
+<tr><td>2024-06-27T19:33:03.300</td><td>O2024062801-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.01260105823671</td><td>64.90436149662719</td><td>0.6707506032794925</td><td>0.8763846063022834</td></tr>
+<tr><td>2024-06-29T11:11:11.900</td><td>O2024062901-NRCA3_FP1-1.fits</td><td>Sensing</td><td>68.61955754982067</td><td>65.40644711461796</td><td>0.670565698344554</td><td>0.8763606492879847</td></tr>
+</table></div></div></div>
 </div>
 </section>
 <section id="wavefront-time-series-and-histogram-plots">
@@ -833,9 +951,35 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=641</i>
+<table id="table139636939949584" class="table-striped table-bordered table-condensed">
+<thead><tr><th>date</th><th>date_obs_mjd</th><th>visitId</th><th>activity</th><th>apername</th><th>corr_id</th><th>fileName</th><th>dataURI</th><th>wfs_measurement_type</th><th>is_post_correction</th><th>is_pre_correction</th></tr></thead>
+<thead><tr><th>str23</th><th>float64</th><th>str12</th><th>str5</th><th>str9</th><th>str11</th><th>str29</th><th>str47</th><th>str10</th><th>bool</th><th>bool</th></tr></thead>
+<tr><td>2022-03-11T19:37:04.200</td><td>59649.81740972222</td><td>V01160001001</td><td>02109</td><td>NRCA3_FP1</td><td>R2022031106</td><td>R2022031106-NRCA3_FP1-3.fits</td><td>mast:JWST/product/R2022031106-NRCA3_FP1-3.fits</td><td>post</td><td>True</td><td>False</td></tr>
+<tr><td>2022-03-12T13:56:12.900</td><td>59650.58070486111</td><td>V01162001001</td><td>02101</td><td>NRCA3_FP1</td><td>R2022031401</td><td>R2022031401-NRCA3_FP1-1.fits</td><td>mast:JWST/product/R2022031401-NRCA3_FP1-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2022-03-12T19:42:19.800</td><td>59650.8210625</td><td>V01162006001</td><td>02101</td><td>NRCA3_FP1</td><td>R2022031401</td><td>R2022031401-NRCA3_FP1-6.fits</td><td>mast:JWST/product/R2022031401-NRCA3_FP1-6.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2022-03-13T02:02:19.300</td><td>59651.084945601855</td><td>V01162012001</td><td>02101</td><td>NRCA3_FP1</td><td>R2022031403</td><td>R2022031403-NRCA3_FP1-1.fits</td><td>mast:JWST/product/R2022031403-NRCA3_FP1-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2022-03-14T15:44:07.500</td><td>59652.65564236111</td><td>V01163006001</td><td>02107</td><td>NRCA3_FP1</td><td>R2022031405</td><td>R2022031405-NRCA3_FP1-1.fits</td><td>mast:JWST/product/R2022031405-NRCA3_FP1-1.fits</td><td>post</td><td>True</td><td>False</td></tr>
+<tr><td>2022-03-17T06:50:00.300</td><td>59655.284725694444</td><td>V01163001001</td><td>02101</td><td>NRCA3_FP1</td><td>R2022032002</td><td>R2022032002-NRCA3_FP1-0.fits</td><td>mast:JWST/product/R2022032002-NRCA3_FP1-0.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2022-03-17T15:50:41.300</td><td>59655.66020023148</td><td>V01163003001</td><td>02101</td><td>NRCA3_FP1</td><td>R2022031703</td><td>R2022031703-NRCA3_FP1-1.fits</td><td>mast:JWST/product/R2022031703-NRCA3_FP1-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2022-03-17T22:54:02.800</td><td>59655.954199074076</td><td>V01163004001</td><td>02107</td><td>NRCA3_FP1</td><td>R2022031801</td><td>R2022031801-NRCA3_FP1-1.fits</td><td>mast:JWST/product/R2022031801-NRCA3_FP1-1.fits</td><td>post</td><td>True</td><td>False</td></tr>
+<tr><td>2022-03-18T05:18:33.700</td><td>59656.22122337963</td><td>V01163005001</td><td>02107</td><td>NRCA3_FP1</td><td>R2022031803</td><td>R2022031803-NRCA3_FP1-1.fits</td><td>mast:JWST/product/R2022031803-NRCA3_FP1-1.fits</td><td>post</td><td>True</td><td>False</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>2025-06-11T11:04:28.600</td><td>60837.46144212963</td><td>V06693119001</td><td>03104</td><td>NRCA1_FP6</td><td>R2025061206</td><td>R2025061206-NRCA1_FP6-1.fits</td><td>mast:JWST/product/R2025061206-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-06-15T10:57:23.800</td><td>60841.45652546296</td><td>V06697176001</td><td>03104</td><td>NRCA1_FP6</td><td>O2025061501</td><td>O2025061501-NRCA1_FP6-1.fits</td><td>mast:JWST/product/O2025061501-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-06-19T22:29:01.200</td><td>60845.93681944445</td><td>V06693181001</td><td>03104</td><td>NRCA1_FP6</td><td>O2025062001</td><td>O2025062001-NRCA1_FP6-1.fits</td><td>mast:JWST/product/O2025062001-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-06-24T17:36:36.300</td><td>60850.733753472225</td><td>V06696084001</td><td>03104</td><td>NRCA1_FP6</td><td>O2025062501</td><td>O2025062501-NRCA1_FP6-1.fits</td><td>mast:JWST/product/O2025062501-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-06-28T23:05:43.400</td><td>60854.96230787037</td><td>V06689056001</td><td>03104</td><td>NRCA1_FP6</td><td>O2025062901</td><td>O2025062901-NRCA1_FP6-1.fits</td><td>mast:JWST/product/O2025062901-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-07-02T11:27:20.700</td><td>60858.47732291667</td><td>V07127007001</td><td>03104</td><td>NRCA1_FP6</td><td>R2025070202</td><td>R2025070202-NRCA1_FP6-1.fits</td><td>mast:JWST/product/R2025070202-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>True</td></tr>
+<tr><td>2025-07-02T12:16:22.600</td><td>60858.511372685185</td><td>V07127007001</td><td>03107</td><td>NRCA1_FP6</td><td>R2025070203</td><td>R2025070203-NRCA1_FP6-1.fits</td><td>mast:JWST/product/R2025070203-NRCA1_FP6-1.fits</td><td>post</td><td>True</td><td>False</td></tr>
+<tr><td>2025-07-05T14:36:59.000</td><td>60861.60901620371</td><td>V07126067001</td><td>03104</td><td>NRCA1_FP6</td><td>O2025070501</td><td>O2025070501-NRCA1_FP6-1.fits</td><td>mast:JWST/product/O2025070501-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-07-09T21:07:55.200</td><td>60865.8805</td><td>V07344115001</td><td>03104</td><td>NRCA1_FP6</td><td>R2025071002</td><td>R2025071002-NRCA1_FP6-1.fits</td><td>mast:JWST/product/R2025071002-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+<tr><td>2025-07-14T01:05:43.000</td><td>60870.045636574076</td><td>V07344017001</td><td>03104</td><td>NRCA1_FP6</td><td>R2025071402</td><td>R2025071402-NRCA1_FP6-1.fits</td><td>mast:JWST/product/R2025071402-NRCA1_FP6-1.fits</td><td>pre</td><td>False</td><td>False</td></tr>
+</table></div></div></div>
 </div>
 <p><b>Download all the OPDs from the opdtable object. Note that some functions need to have all the OPDs available. </b></p>
-<div class="cell docutils container">
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stpsf</span><span class="o">.</span><span class="n">mast_wss</span><span class="o">.</span><span class="n">download_all_opds</span><span class="p">(</span><span class="n">opdtable</span><span class="p">)</span>
 </pre></div>
@@ -851,6 +995,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: TimeDeltaMissingUnitWarning: Numerical value without unit or explicit format passed to TimeDelta, assuming days [astropy.time.core]
+</pre></div>
+</div>
+<img alt="../../../_images/41dc35d0a561881e04448242dffbced7f2a90e0d12a8d54d38104fb2b6b625be.png" src="../../../_images/41dc35d0a561881e04448242dffbced7f2a90e0d12a8d54d38104fb2b6b625be.png" />
+</div>
 </div>
 </section>
 <section id="plot-over-a-time-range">
@@ -865,6 +1015,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: TimeDeltaMissingUnitWarning: Numerical value without unit or explicit format passed to TimeDelta, assuming days [astropy.time.core]
+</pre></div>
+</div>
+<img alt="../../../_images/f324dd41751645a51cdb7d11564623fb9fe959d3e66405c89a60c94b529925be.png" src="../../../_images/f324dd41751645a51cdb7d11564623fb9fe959d3e66405c89a60c94b529925be.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -876,13 +1032,61 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/e30b3eaed31594725320ddd336a611603aad3b9a5d1de6a6a0a500d4e635355f.png" src="../../../_images/e30b3eaed31594725320ddd336a611603aad3b9a5d1de6a6a0a500d4e635355f.png" />
 </div>
-<div class="cell docutils container">
+</div>
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can plot histograms of wavefront error levels over time</span>
 <span class="n">stpsf</span><span class="o">.</span><span class="n">trending</span><span class="o">.</span><span class="n">wfe_histogram_plot</span><span class="p">(</span><span class="n">opdtable</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">ote_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Locator attempting to generate 1202 ticks ([19136.0, ..., 20337.0]), which exceeds Locator.MAXTICKS (1000).
+</pre></div>
+</div>
+<img alt="../../../_images/1d527fdbb8bd053c3a7baf40461ba8f7054798b91b7501fe15e911174715aed6.png" src="../../../_images/1d527fdbb8bd053c3a7baf40461ba8f7054798b91b7501fe15e911174715aed6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -893,6 +1097,9 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <span class="n">stpsf</span><span class="o">.</span><span class="n">trending</span><span class="o">.</span><span class="n">wfe_histogram_plot</span><span class="p">(</span><span class="n">opdtable</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">ote_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c0a42f36e286f5f19b2581b1e3b489a1fd027702b869b3ccb9ad07bc2703e199.png" src="../../../_images/c0a42f36e286f5f19b2581b1e3b489a1fd027702b869b3ccb9ad07bc2703e199.png" />
 </div>
 </div>
 </section>
@@ -910,10 +1117,26 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importing and format-converting OPD from R2022120204-NRCA3_FP1-1.fits
+Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psf</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: (No file associated with this HDUList)
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  OVERSAMP      1 PrimaryHDU     104   (2044, 2044)   float64   
+  1  DET_SAMP      1 ImageHDU       106   (511, 511)   float64   
+  2  OVERDIST      1 ImageHDU       158   (2044, 2044)   float64   
+  3  DET_DIST      1 ImageHDU       159   (511, 511)   float64   
 </pre></div>
 </div>
 </div>
@@ -929,6 +1152,9 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7b3073ee5286fecc2de89ddc518809964df2d7c056c231d84dc94ea56d083cfa.png" src="../../../_images/7b3073ee5286fecc2de89ddc518809964df2d7c056c231d84dc94ea56d083cfa.png" />
+</div>
 </div>
 </section>
 </section>
@@ -939,6 +1165,11 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;jw02725-o484_t097_nircam_clear-f356w-nrcalong_wfscmb-04.fits&#39;</span>
 <span class="n">mast_retrieve_files</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./jw02725-o484_t097_nircam_clear-f356w-nrcalong_wfscmb-04.fits&#39;
 </pre></div>
 </div>
 </div>
@@ -966,6 +1197,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7eff618a6d10&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/ee24471b81a8e26d9aa289044d342192592deaec50d3d326188197ab3ae47ebf.png" src="../../../_images/ee24471b81a8e26d9aa289044d342192592deaec50d3d326188197ab3ae47ebf.png" />
+</div>
 </div>
 <section id="extract-a-subarray-around-source-of-interest-and-measure-source-location">
 <h3>Extract a subarray around source of interest, and measure source location<a class="headerlink" href="#extract-a-subarray-around-source-of-interest-and-measure-source-location" title="Link to this heading">#</a></h3>
@@ -987,6 +1224,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Cutout around a galaxy merger and a star&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/8422a00b4c8b7c177fd35930b26c43946f302bc50d3305e43a85f87e411ae3c8.png" src="../../../_images/8422a00b4c8b7c177fd35930b26c43946f302bc50d3305e43a85f87e411ae3c8.png" />
+</div>
 </div>
 </section>
 <section id="find-the-source">
@@ -1001,6 +1244,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7eff61a2c850&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/5da7f1eabeeac839c5352ed4abb56568de5518123cd958cdbcdc6e698906dd55.png" src="../../../_images/5da7f1eabeeac839c5352ed4abb56568de5518123cd958cdbcdc6e698906dd55.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1019,6 +1268,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(530.0226667657246), np.float64(1946.070810439899))
+</pre></div>
+</div>
+<img alt="../../../_images/294bd21c272838053e3bd7be6482770244a062922a59fe2139c287d7ca531383.png" src="../../../_images/294bd21c272838053e3bd7be6482770244a062922a59fe2139c287d7ca531383.png" />
+</div>
 </div>
 </section>
 <section id="use-previous-function-to-set-up-our-simulation">
@@ -1032,10 +1287,246 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting up sim to match jw02725-o484_t097_nircam_clear-f356w-nrcalong_wfscmb-04.fits
+iterating query, tdelta=3.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAST OPD query around UTC: 2022-11-29T17:26:17.630
+                        MJD: 59912.72659293981
+
+OPD immediately preceding the given datetime:
+	URI:	 mast:JWST/product/R2022112903-NRCA3_FP1-1.fits
+	Date (MJD):	 59912.7265
+	Delta time:	 -0.0001 days
+
+OPD immediately following the given datetime:
+	URI:	 mast:JWST/product/R2022120203-NRCA3_FP1-1.fits
+	Date (MJD):	 59915.1683
+	Delta time:	 2.4417 days
+User requested choosing OPD time closest in time to 2022-11-29T17:26:17.630, which is R2022112903-NRCA3_FP1-1.fits, delta time -0.000 days
+Importing and format-converting OPD from data/stpsf-data/MAST_JWST_WSS_OPDs/R2022112903-NRCA3_FP1-1.fits
+Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Configured simulation instrument for:
+    Instrument: NIRCam
+    Filter: F356W
+    Detector: NRCA5
+    Apername: NRCA5_FULL
+    Det. Pos.: (1024, 1024) 
+    Image plane mask: None
+    Pupil plane mask: None
+    
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_stpsf_nrc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= &#39;IMAGE   &#39;           / Image extension                                
+BITPIX  =                  -64 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                  200                                                  
+NAXIS2  =                  200                                                  
+PCOUNT  =                    0 / number of parameters                           
+GCOUNT  =                    1 / number of groups                               
+PLANE1  = &#39;Wavefront Intensity&#39;                                                 
+WAVELEN = 3.52998044562017E-06 / Weighted mean wavelength in meters             
+DIFFLMT =   0.0976844608559387 / Diffraction limit lambda/D in arcsec           
+OVERSAMP=                    1 / These data are rebinned to detector pixels     
+DET_SAMP=                    4 / Oversampling factor for MFT to detector plane  
+PIXELSCL=           0.06290713 / Scale in arcsec/pix (after oversampling)       
+FOV     =            12.581426 / Field of view in arcsec (full array)           
+NWAVES  =                   21 / Number of wavelengths used in calculation      
+WAVE0   = 3.12731886916690E-06 / Wavelength 0                                   
+WGHT0   = 0.029010311119741023 / Wavelength weight 0                            
+WAVE1   = 3.17097412253077E-06 / Wavelength 1                                   
+WGHT1   =  0.05689236899019836 / Wavelength weight 1                            
+WAVE2   = 3.21462937589464E-06 / Wavelength 2                                   
+WGHT2   =  0.05750257615337047 / Wavelength weight 2                            
+WAVE3   = 3.25828462925851E-06 / Wavelength 3                                   
+WGHT3   =  0.05665770867940551 / Wavelength weight 3                            
+WAVE4   = 3.30193988262238E-06 / Wavelength 4                                   
+WGHT4   =  0.05599172516198777 / Wavelength weight 4                            
+WAVE5   = 3.34559513598625E-06 / Wavelength 5                                   
+WGHT5   = 0.055850313012947225 / Wavelength weight 5                            
+WAVE6   = 3.38925038935012E-06 / Wavelength 6                                   
+WGHT6   =  0.05544478069113173 / Wavelength weight 6                            
+WAVE7   = 3.43290564271399E-06 / Wavelength 7                                   
+WGHT7   =  0.05465666724163407 / Wavelength weight 7                            
+WAVE8   = 3.47656089607787E-06 / Wavelength 8                                   
+WGHT8   =   0.0536889406582253 / Wavelength weight 8                            
+WAVE9   = 3.52021614944174E-06 / Wavelength 9                                   
+WGHT9   = 0.052769619836572045 / Wavelength weight 9                            
+WAVE10  = 3.56387140280561E-06 / Wavelength 10                                  
+WGHT10  =  0.05174556293270933 / Wavelength weight 10                           
+WAVE11  = 3.60752665616948E-06 / Wavelength 11                                  
+WGHT11  =    0.050926124841304 / Wavelength weight 11                           
+WAVE12  = 3.65118190953335E-06 / Wavelength 12                                  
+WGHT12  =  0.05008430229370746 / Wavelength weight 12                           
+WAVE13  = 3.69483716289722E-06 / Wavelength 13                                  
+WGHT13  =  0.04911627277824833 / Wavelength weight 13                           
+WAVE14  = 3.73849241626109E-06 / Wavelength 14                                  
+WGHT14  = 0.048066127719162625 / Wavelength weight 14                           
+WAVE15  = 3.78214766962496E-06 / Wavelength 15                                  
+WGHT15  =  0.04674715249735926 / Wavelength weight 15                           
+WAVE16  = 3.82580292298883E-06 / Wavelength 16                                  
+WGHT16  =   0.0454832673914629 / Wavelength weight 16                           
+WAVE17  = 3.86945817635270E-06 / Wavelength 17                                  
+WGHT17  = 0.044181453325114764 / Wavelength weight 17                           
+WAVE18  = 3.91311342971657E-06 / Wavelength 18                                  
+WGHT18  =   0.0413649282857484 / Wavelength weight 18                           
+WAVE19  = 3.95676868308044E-06 / Wavelength 19                                  
+WGHT19  =  0.03220514808749848 / Wavelength weight 19                           
+WAVE20  = 4.00042393644431E-06 / Wavelength 20                                  
+WGHT20  = 0.011614648302470809 / Wavelength weight 20                           
+FFTTYPE = &#39;numpy.fft&#39;          / Algorithm for FFTs: numpy or fftw              
+NORMALIZ= &#39;first   &#39;           / PSF normalization method                       
+JITRTYPE= &#39;Gaussian convolution&#39; / Type of jitter applied                       
+JITRSIGM=               0.0008 / Gaussian sigma for jitter, per axis [arcsec]   
+JITRSTRL=                  1.0 / Strehl reduction from jitter                   
+PUPILINT= &#39;jwst_pupil_RevW_npix1024.fits.gz&#39; / Pupil aperture intensity source  
+PUPILOPD= &#39;OPD from supplied FITS HDUlist object&#39; / Pupil OPD source            
+OPD_FILE= &#39;R2022112903-NRCA3_FP1-1.fits&#39; / Pupil OPD file name                  
+OPDSLICE=                    0 / Pupil OPD slice number, if file is a datacube  
+INSTRUME= &#39;NIRCam  &#39;           / Instrument                                     
+FILTER  = &#39;F356W   &#39;           / Filter name                                    
+EXTNAME = &#39;DET_DIST&#39;           / This extension is oversampled.                 
+DATE    = &#39;2025-07-15T17:47:39&#39; / Date of calculation                           
+AUTHOR  = &#39;runner@pkrvmq0rgcvqdmg&#39; / username@host for calculation              
+VERSION = &#39;2.1.0   &#39;           / STPSF software version                         
+DATAVERS= &#39;2.1.0   &#39;           / STPSF reference data files version             
+DET_NAME= &#39;NRCA5   &#39;           / Name of detector on this instrument            
+DET_X   =                530.5 / Detector X pixel position of array center      
+DET_Y   =               1946.5 / Detector Y pixel position of array center      
+DET_V2  =   1.9445793009682408 / [arcmin] Det. pos. in telescope V2,V3 coord sys
+DET_V3  =   -7.259916804742389 / [arcmin] Det. pos. in telescope V2,V3 coord sys
+TEL_WFE =    64.31211781548207 / [nm] Telescope pupil RMS wavefront error       
+OTETHMDL= &#39;BOL     &#39;           / OTE Thermal slew model case                    
+OTETHSTA=                  0.0 / OTE Starting pitch angle for thermal slew model
+OTETHEND=                  0.0 / OTE Ending pitch angle for thermal slew model  
+OTETHRDT=                  0.0 / OTE Thermal slew model delta time after slew   
+OTETHRWF=                  0.0 / OTE WFE amplitude from &#39;thermal slew&#39; term     
+OTEFRLWF=                  0.0 / OTE WFE amplitude from &#39;frill tension&#39; term    
+OTEIECWF=                  0.0 / OTE WFE amplitude from &#39;IEC thermal cycling&#39; te
+SI_WFE  =    71.92925624358796 / [nm] instrument pupil RMS wavefront error      
+SIWFETYP= &#39;Extrapolated&#39;       / SI WFE was extrapolated outside available meas.
+SIWFEFPT= &#39;ISIM42  &#39;           / Closest ISIM CV3 WFE meas. field point         
+SIZERN1 = -1.0697917988307E-08 / [m] SI WFE coeff for Zernike term 1            
+SIZERN2 = 3.08048159443971E-10 / [m] SI WFE coeff for Zernike term 2            
+SIZERN3 = -1.9196041984348E-09 / [m] SI WFE coeff for Zernike term 3            
+SIZERN4 = -8.1173126758238E-08 / [m] SI WFE coeff for Zernike term 4            
+SIZERN5 = 1.51797969643943E-08 / [m] SI WFE coeff for Zernike term 5            
+SIZERN6 = 4.32636655822125E-09 / [m] SI WFE coeff for Zernike term 6            
+SIZERN7 = -8.0281498018401E-09 / [m] SI WFE coeff for Zernike term 7            
+SIZERN8 = -1.5951952117892E-10 / [m] SI WFE coeff for Zernike term 8            
+SIZERN9 = -1.9417997569617E-09 / [m] SI WFE coeff for Zernike term 9            
+SIZERN10= 1.16285054335882E-09 / [m] SI WFE coeff for Zernike term 10           
+SIZERN11= -1.1748250980632E-09 / [m] SI WFE coeff for Zernike term 11           
+SIZERN12= -1.4078671907797E-09 / [m] SI WFE coeff for Zernike term 12           
+SIZERN13= -6.6810299931733E-09 / [m] SI WFE coeff for Zernike term 13           
+SIZERN14=  3.7853868843729E-09 / [m] SI WFE coeff for Zernike term 14           
+SIZERN15= -1.4415140518215E-09 / [m] SI WFE coeff for Zernike term 15           
+SIZERN16= -3.9703513237096E-09 / [m] SI WFE coeff for Zernike term 16           
+SIZERN17= 1.31563560122644E-09 / [m] SI WFE coeff for Zernike term 17           
+SIZERN18= 3.77897113698746E-10 / [m] SI WFE coeff for Zernike term 18           
+SIZERN19= -1.8404320671331E-09 / [m] SI WFE coeff for Zernike term 19           
+SIZERN20= -3.1559659796023E-09 / [m] SI WFE coeff for Zernike term 20           
+SIZERN21= 9.70396713584626E-11 / [m] SI WFE coeff for Zernike term 21           
+SIZERN22= -4.1669897552317E-09 / [m] SI WFE coeff for Zernike term 22           
+SIZERN23= 1.75844652958335E-09 / [m] SI WFE coeff for Zernike term 23           
+SIZERN24= 1.56437696827783E-09 / [m] SI WFE coeff for Zernike term 24           
+SIZERN25= 1.98457418229480E-09 / [m] SI WFE coeff for Zernike term 25           
+SIZERN26= 3.41706025271797E-10 / [m] SI WFE coeff for Zernike term 26           
+SIZERN27= 1.00589037061746E-09 / [m] SI WFE coeff for Zernike term 27           
+SIZERN28= 8.04885292119649E-09 / [m] SI WFE coeff for Zernike term 28           
+SIZERN29= 2.44073543618285E-09 / [m] SI WFE coeff for Zernike term 29           
+SIZERN30= -1.1286841969615E-09 / [m] SI WFE coeff for Zernike term 30           
+SIZERN31= -2.3313034957157E-10 / [m] SI WFE coeff for Zernike term 31           
+SIZERN32= 3.80384668407082E-09 / [m] SI WFE coeff for Zernike term 32           
+SIZERN33= 2.87255591936445E-11 / [m] SI WFE coeff for Zernike term 33           
+SIZERN34= 1.39286599091967E-09 / [m] SI WFE coeff for Zernike term 34           
+SIZERN35= 1.22687031149893E-09 / [m] SI WFE coeff for Zernike term 35           
+APERNAME= &#39;NRCA5_FULL&#39;         / SIAF aperture name                             
+MODULE  = &#39;A       &#39;           / NIRCam module: A or B                          
+CHANNEL = &#39;Long    &#39;           / NIRCam channel: long or short                  
+PILIN   = &#39;False   &#39;           / Pupil imaging lens in optical path: T/F        
+ROTATION=          -0.06338311 / PSF rotated to match detector rotation         
+DISTORT = &#39;True    &#39;           / SIAF distortion coefficients applied           
+SIAF_VER= &#39;PRDOPSSOC-068&#39;      / SIAF PRD version used                          
+COEF_X00=                  0.0 / SIAF distortion coefficient for Idl2SciX00     
+COEF_X10=         15.935064289 / SIAF distortion coefficient for Idl2SciX10     
+COEF_X11=     0.00062662311666 / SIAF distortion coefficient for Idl2SciX11     
+COEF_X20=     -0.0004866509075 / SIAF distortion coefficient for Idl2SciX20     
+COEF_X21=      0.0029284279113 / SIAF distortion coefficient for Idl2SciX21     
+COEF_X22=     0.00038194617433 / SIAF distortion coefficient for Idl2SciX22     
+COEF_X30=     -6.765142999E-06 / SIAF distortion coefficient for Idl2SciX30     
+COEF_X31=    -2.5133479064E-08 / SIAF distortion coefficient for Idl2SciX31     
+COEF_X32=    -5.9888336301E-06 / SIAF distortion coefficient for Idl2SciX32     
+COEF_X33=     9.6468885579E-08 / SIAF distortion coefficient for Idl2SciX33     
+COEF_X40=     4.7744230522E-09 / SIAF distortion coefficient for Idl2SciX40     
+COEF_X41=    -2.0517544492E-09 / SIAF distortion coefficient for Idl2SciX41     
+COEF_X42=     1.3815714874E-09 / SIAF distortion coefficient for Idl2SciX42     
+COEF_X43=     -2.426584853E-09 / SIAF distortion coefficient for Idl2SciX43     
+COEF_X44=     1.2928805585E-09 / SIAF distortion coefficient for Idl2SciX44     
+COEF_X50=     1.3344738859E-11 / SIAF distortion coefficient for Idl2SciX50     
+COEF_X51=    -5.3342857046E-11 / SIAF distortion coefficient for Idl2SciX51     
+COEF_X52=    -1.0440706849E-10 / SIAF distortion coefficient for Idl2SciX52     
+COEF_X53=    -1.7536898874E-11 / SIAF distortion coefficient for Idl2SciX53     
+COEF_X54=    -3.4500183346E-11 / SIAF distortion coefficient for Idl2SciX54     
+COEF_X55=     1.5806704408E-11 / SIAF distortion coefficient for Idl2SciX55     
+COEF_Y00=                  0.0 / SIAF distortion coefficient for Idl2SciY00     
+COEF_Y10=       0.023739771631 / SIAF distortion coefficient for Idl2SciY10     
+COEF_Y11=         15.858052334 / SIAF distortion coefficient for Idl2SciY11     
+COEF_Y20=     -0.0012404007583 / SIAF distortion coefficient for Idl2SciY20     
+COEF_Y21=    -0.00089790574444 / SIAF distortion coefficient for Idl2SciY21     
+COEF_Y22=      0.0017034211874 / SIAF distortion coefficient for Idl2SciY22     
+COEF_Y30=     2.0629748211E-07 / SIAF distortion coefficient for Idl2SciY30     
+COEF_Y31=    -7.0626833341E-06 / SIAF distortion coefficient for Idl2SciY31     
+COEF_Y32=    -3.4856432882E-07 / SIAF distortion coefficient for Idl2SciY32     
+COEF_Y33=    -6.1165886835E-06 / SIAF distortion coefficient for Idl2SciY33     
+COEF_Y40=    -3.6220865015E-09 / SIAF distortion coefficient for Idl2SciY40     
+COEF_Y41=     1.4877764101E-09 / SIAF distortion coefficient for Idl2SciY41     
+COEF_Y42=    -3.5926010043E-09 / SIAF distortion coefficient for Idl2SciY42     
+COEF_Y43=     5.2665557003E-10 / SIAF distortion coefficient for Idl2SciY43     
+COEF_Y44=    -3.8007690059E-09 / SIAF distortion coefficient for Idl2SciY44     
+COEF_Y50=    -1.8738092393E-11 / SIAF distortion coefficient for Idl2SciY50     
+COEF_Y51=    -2.7459579135E-11 / SIAF distortion coefficient for Idl2SciY51     
+COEF_Y52=     1.7468257099E-11 / SIAF distortion coefficient for Idl2SciY52     
+COEF_Y53=    -8.7857813876E-11 / SIAF distortion coefficient for Idl2SciY53     
+COEF_Y54=    -1.6157416544E-12 / SIAF distortion coefficient for Idl2SciY54     
+COEF_Y55=    -5.0913836989E-11 / SIAF distortion coefficient for Idl2SciY55     
+CHDFTYPE= &#39;gaussian&#39;           / Type of detector charge diffusion model        
+CHDFSIGM=                0.018 / [arcsec] Gaussian sigma for charge diff model  
+CALCSAMP=                    4 / This much oversampling used in calculation     
+IPCINST = &#39;NIRCam  &#39;           / Interpixel capacitance (IPC)                   
+IPCTYPA = &#39;485     &#39;           / NRC SCA num used for IPC and PPC model         
+IPCFILE = &#39;KERNEL_IPC_CUBE.fits&#39; / IPC model source file                        
+PPCFILE = &#39;KERNEL_PPC_CUBE.fits&#39; / PPC model source file                        
+HISTORY Created wavefront: wavelength=3.127e-06 m, diam=6.603 m                 
+HISTORY  using array size (1024, 1024)                                          
+HISTORY   Multiplied WF by phasor for Pupil plane: JWST Entrance Pupil          
+HISTORY   Propagating wavefront to Coordinate Inversion in y axis.              
+HISTORY Inverted axis direction for Y axes                                      
+HISTORY   Multiplied WF by phasor for Pupil plane: NIRCamLWA internal WFE at V2V
+HISTORY 3=(1.94,-7.26)&#39;, near ISIM42                                            
+HISTORY   Propagating wavefront to Detector plane: NIRCam detector (200x200 pixe
+HISTORY ls, 0.063 arcsec / pix).                                                
+HISTORY     Propagating w/ MFT: 0.0157 arcsec / pix     fov=128.797 lam/D    npi
+HISTORY x=800                                                                   
+HISTORY Calculation completed in 5.136 seconds                                  
+HISTORY Created by POPPY version                                                
+HISTORY Applied detector charge diffusion model.                                
+HISTORY Applied detector interpixel capacitance (IPC) model                     
 </pre></div>
 </div>
 </div>
@@ -1047,6 +1538,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stpsf_model</span> <span class="o">=</span> <span class="n">photutils</span><span class="o">.</span><span class="n">psf</span><span class="o">.</span><span class="n">FittableImageModel</span><span class="p">(</span><span class="n">single_stpsf_nrc</span><span class="p">[</span><span class="s1">&#39;DET_DIST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">oversampling</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The FittableImageModel class is deprecated and may be removed in a future version.
+        Use `ImagePSF` instead. [warnings]
 </pre></div>
 </div>
 </div>
@@ -1068,6 +1565,13 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">phot</span><span class="p">)</span> <span class="c1"># single source</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id group_id group_size ...        qfit                cfit         flags
+--- -------- ---------- ... ----------------- --------------------- -----
+  1        1          1 ... 0.085644426342218 -0.011874497619931996     0
 </pre></div>
 </div>
 </div>
@@ -1097,6 +1601,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Clean - PSFPhotometry zoom&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/9a7b75474203630e34311b8b24841b97e54b6830b2ec09e0328692c46b9084df.png" src="../../../_images/9a7b75474203630e34311b8b24841b97e54b6830b2ec09e0328692c46b9084df.png" />
+</div>
 </div>
 </section>
 <section id="psf-properties-and-differences">
@@ -1109,6 +1619,11 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <span class="n">ee_psf</span> <span class="o">=</span> <span class="n">poppy</span><span class="o">.</span><span class="n">measure_ee</span><span class="p">(</span><span class="n">single_stpsf_nrc</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">)</span>
 <span class="n">ee_val</span> <span class="o">=</span> <span class="n">ee_psf</span><span class="p">(</span><span class="n">ee_arcsec_radius</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ee (</span><span class="si">{}</span><span class="s2">px, </span><span class="si">{:.3f}</span><span class="s2">arsec)  = </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ee_pixel_radius</span><span class="p">,</span> <span class="n">ee_arcsec_radius</span><span class="p">,</span> <span class="n">ee_val</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ee (2.5px, 0.078arsec)  = 0.5124
 </pre></div>
 </div>
 </div>
@@ -1156,6 +1671,11 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FWHM X-direction: 1.835, FWHM y-direction: 1.88
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1166,11 +1686,65 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7eff61a14910&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/2abe0804c96c85733c338286b0de89d1eea8f6d45f92b40be2e2df69e30d0923.png" src="../../../_images/2abe0804c96c85733c338286b0de89d1eea8f6d45f92b40be2e2df69e30d0923.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check OPD header information</span>
 <span class="n">nrc</span><span class="o">.</span><span class="n">pupilopd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SIMPLE  =                    T / Written by IDL:  Fri Dec  2 22:39:16 2022      
+BITPIX  =                  -64 / Number of bits per data pixel                  
+NAXIS   =                    2 / Number of data axes                            
+NAXIS1  =                 1024                                                  
+NAXIS2  =                 1024                                                  
+EXTEND  =                    T / FITS data may contain extensions               
+DATE    = &#39;2022-12-02&#39;         / Creation UTC (CCCC-MM-DD) date of FITS header  
+COMMENT FITS (Flexible Image Transport System) format is defined in &#39;Astronomy  
+COMMENT and Astrophysics&#39;, volume 376, page 359; bibcode 2001A&amp;A...376..359H    
+FILECONT= &#39;Analysis output products&#39; /                                          
+TSTAMP  = &#39;2022-12-02T22:39:16&#39; /                                               
+DATE-OBS= &#39;2022-12-02&#39;         /                                                
+TIME-OBS= &#39;04:02:21.595&#39;       /                                                
+OBS_ID  = &#39;V02724347001P0000000003104&#39; /                                        
+OP_TYPE = &#39;WAVEFRONT_MAINTENANCE&#39; /                                             
+MODE    = &#39;AUTOMATIC&#39;          /                                                
+OPER    = &#39;TRUE    &#39;           /                                                
+CORR_ID = &#39;R2022120204&#39;        /                                                
+GROUP_ID=                    1 /                                                
+GRP_CNT =                    2 /                                                
+INSTRUME= &#39;NIRCam-A&#39;           /                                                
+DETECTOR= &#39;NRCA3   &#39;           /                                                
+APERNAME= &#39;NRCA3_FP1&#39;          /                                                
+FPX     =             -1.16891 /                                                
+FPY     =            -0.767005 /                                                
+BUNIT   = &#39;m       &#39;                                                            
+PUPLDIAM=             6.603464                                                  
+PUPLSCAL=      0.0064486953125                                                  
+CONTENTS= &#39;Estimated OTE WFE from Wavefront Sensing Measurements&#39;               
+HISTORY OPD file retrieved from MAST for use by STPSF.                          
+HISTORY Converting input for use with STPSF:                                    
+HISTORY   Input file is: R2022120204-NRCA3_FP1-1.fits                           
+HISTORY   Need to rescale from 256x256 to 1024x1024 pixels.                     
+HISTORY   Dilated OPD values to fill adjacent invalid pixels (i.e. fill in gaps)
+HISTORY   Interpolated array to 1024x1024 pixels across                         
+HISTORY   Converted units from microns to meters                                
+HISTORY Estimating SI WFE at sensing field point NRCA3_FP1.                     
+HISTORY   See FITS extension SENSING_SI_WFE for the SI WFE model used.          
+HISTORY   Subtracted SI WFE to estimate OTE-only global WFE.                    
+HISTORY Estimating OTE field dependence term at NRCA3_FP1.                      
+HISTORY   Selected instrument field point is at V2,V3 = [ 1.1595149  -8.59714411
+HISTORY ] arcmin.                                                               
+HISTORY   See FITS extension SENSING_OTE_FD_WFE for the WFE model used.         
+HISTORY   Subtracted OTE field dependence to estimate OTE global WFE.           
 </pre></div>
 </div>
 </div>
@@ -1182,6 +1756,12 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <span class="n">opd_fn</span> <span class="o">=</span> <span class="s1">&#39;R2022120404-NRCA3_FP1-1.fits&#39;</span>
 <span class="n">inst</span><span class="o">.</span><span class="n">load_wss_opd</span><span class="p">(</span><span class="n">opd_fn</span><span class="p">)</span>
 <span class="n">psf2</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">calc_psf</span><span class="p">(</span><span class="n">fov_pixels</span><span class="o">=</span><span class="n">size_pixels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importing and format-converting OPD from R2022120404-NRCA3_FP1-1.fits
+Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
 </pre></div>
 </div>
 </div>
@@ -1197,12 +1777,20 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ee (2.5px, 0.078arsec)  = 0.5545
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stpsf</span><span class="o">.</span><span class="n">display_psf_difference</span><span class="p">(</span><span class="n">single_stpsf_nrc</span><span class="p">,</span> <span class="n">psf2</span><span class="p">,</span> <span class="n">imagecrop</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Difference between two OPDs&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_heat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c18b134deec262573a0b996758579d1f00908c9fbe82dcd8fd67f9fabf1fc42e.png" src="../../../_images/c18b134deec262573a0b996758579d1f00908c9fbe82dcd8fd67f9fabf1fc42e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1257,6 +1845,46 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iterating query, tdelta=3.0
+
+MAST OPD query around UTC: 2022-07-12T00:00:00.000
+                        MJD: 59772.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPD immediately preceding the given datetime:
+	URI:	 mast:JWST/product/O2022071001-NRCA3_FP1-0.fits
+	Date (MJD):	 59770.4830
+	Delta time:	 -1.5170 days
+
+OPD immediately following the given datetime:
+	URI:	 mast:JWST/product/R2022071302-NRCA3_FP1-1.fits
+	Date (MJD):	 59772.6632
+	Delta time:	 0.6632 days
+User requested choosing OPD time closest in time to 2022-07-12T00:00:00.000, which is R2022071302-NRCA3_FP1-1.fits, delta time 0.663 days
+Importing and format-converting OPD from /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/cross_instrument/stpsf_examples/R2022071302-NRCA3_FP1-1.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;astropy.io.fits.hdu.image.PrimaryHDU object at 0x7eff637cf710&gt;, &lt;astropy.io.fits.hdu.image.ImageHDU object at 0x7eff639378d0&gt;, &lt;astropy.io.fits.hdu.image.ImageHDU object at 0x7eff6275e810&gt;, &lt;astropy.io.fits.hdu.image.ImageHDU object at 0x7eff62b30650&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/01e29a025ce75d5bb683d0c906a8c2297b9c011e4e44a027e608653551b9eca0.png" src="../../../_images/01e29a025ce75d5bb683d0c906a8c2297b9c011e4e44a027e608653551b9eca0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1264,8 +1892,11 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ace40941fde25aab8514964785f510b8d00ac8399c976c206b67244e38df8a0f.png" src="../../../_images/ace40941fde25aab8514964785f510b8d00ac8399c976c206b67244e38df8a0f.png" />
 </div>
-<div class="cell docutils container">
+</div>
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsp</span> <span class="o">=</span> <span class="n">stpsf</span><span class="o">.</span><span class="n">NIRSpec</span><span class="p">()</span>
 <span class="c1"># or you can specify a full path name.</span>
@@ -1292,6 +1923,163 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importing and format-converting OPD from R2022120404-NRCA3_FP1-1.fits
+Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<img alt="../../../_images/41d91d94857c809c55e6b73a1b86127ef2a750b9776b5b3be4dcbbadf2ba8234.png" src="../../../_images/41d91d94857c809c55e6b73a1b86127ef2a750b9776b5b3be4dcbbadf2ba8234.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1303,6 +2091,9 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/20d11e3a9d51b98f06730c0e8ac46f9dbb41937c33ed92ecd43340e697805916.png" src="../../../_images/20d11e3a9d51b98f06730c0e8ac46f9dbb41937c33ed92ecd43340e697805916.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1310,12 +2101,54 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iterating query, tdelta=3.0
+
+MAST OPD query around UTC: 2022-07-12T00:00:00.000
+                        MJD: 59772.0
+
+OPD immediately preceding the given datetime:
+	URI:	 mast:JWST/product/O2022071001-NRCA3_FP1-0.fits
+	Date (MJD):	 59770.4830
+	Delta time:	 -1.5170 days
+
+OPD immediately following the given datetime:
+	URI:	 mast:JWST/product/R2022071302-NRCA3_FP1-1.fits
+	Date (MJD):	 59772.6632
+	Delta time:	 0.6632 days
+User requested choosing OPD time closest in time to 2022-07-12T00:00:00.000, which is R2022071302-NRCA3_FP1-1.fits, delta time 0.663 days
+Importing and format-converting OPD from /home/runner/work/jdat_notebooks/jdat_notebooks/notebooks/cross_instrument/stpsf_examples/R2022071302-NRCA3_FP1-1.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Backing out SI WFE and OTE field dependence at the WF sensing field point (NRCA3_FP1)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: VerifyWarning: Card is too long, comment will be truncated. [astropy.io.fits.card]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;astropy.io.fits.hdu.image.PrimaryHDU object at 0x7effc2e95690&gt;, &lt;astropy.io.fits.hdu.image.ImageHDU object at 0x7eff68580c90&gt;, &lt;astropy.io.fits.hdu.image.ImageHDU object at 0x7effc2e95b10&gt;, &lt;astropy.io.fits.hdu.image.ImageHDU object at 0x7eff709a0c50&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/01e29a025ce75d5bb683d0c906a8c2297b9c011e4e44a027e608653551b9eca0.png" src="../../../_images/01e29a025ce75d5bb683d0c906a8c2297b9c011e4e44a027e608653551b9eca0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ee_curves</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ace40941fde25aab8514964785f510b8d00ac8399c976c206b67244e38df8a0f.png" src="../../../_images/ace40941fde25aab8514964785f510b8d00ac8399c976c206b67244e38df8a0f.png" />
 </div>
 </div>
 </section>
@@ -1332,10 +2165,23 @@ For each input image, the Low-Order Phase extension will contain an image which 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/stpsf/opds.py:1759: UserWarning: For (V2,V3) = [-8.39108833 -5.32144667] arcmin, Field point -8.254199999999999 arcmin, -2.478553333333333 arcmin not within valid region for field dependence model of OTE WFE for MIRI: -8.254199999999999 arcmin--6.21738 arcmin, -2.557224 arcmin--0.5632056 arcmin.  Clipping to closest available valid location, 0.13688833333333505 arcmin away from the requested coordinates.
+  warnings.warn(warning_message)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: (No file associated with this HDUList)
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  OVERSAMP      1 PrimaryHDU    1075   (284, 284, 970)   float64   
 </pre></div>
 </div>
 </div>
@@ -1355,6 +2201,13 @@ For each input image, the Low-Order Phase extension will contain an image which 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: (No file associated with this HDUList)
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  OVERSAMP      1 PrimaryHDU    1049   (192, 192, 940)   float64   
 </pre></div>
 </div>
 </div>

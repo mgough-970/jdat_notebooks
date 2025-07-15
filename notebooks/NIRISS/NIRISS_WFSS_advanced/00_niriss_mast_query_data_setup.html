@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
@@ -492,13 +492,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="download-wide-field-slittless-spectroscopy-wfss-data">
+  <section class="tex2jax_ignore mathjax_ignore" id="download-wide-field-slittless-spectroscopy-wfss-data">
 <h1>Download Wide Field Slittless Spectroscopy (WFSS) Data<a class="headerlink" href="#download-wide-field-slittless-spectroscopy-wfss-data" title="Link to this heading">#</a></h1>
 <p>This notebook uses the python <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/mast/mast_obsquery.html">astroquery.mast Observations</a> class of the <a class="reference external" href="https://mast.stsci.edu/api/v0/">MAST API</a> to query specific data products of a specific program. We are looking for NIRISS imaging and WFSS files of the <a class="reference external" href="https://www.stsci.edu/jwst/phase2-public/2079.pdf">NGDEEP program</a> (ID 2079). The observations are in three <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-near-infrared-imager-and-slitless-spectrograph/niriss-instrumentation/niriss-pupil-and-filter-wheels">NIRISS filters</a>: F115W, F150W, and F200W using both GR150R and GR150C <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-near-infrared-imager-and-slitless-spectrograph/niriss-instrumentation/niriss-gr150-grisms">grisms</a>. A <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-near-infrared-imager-and-slitless-spectrograph/niriss-observing-strategies/niriss-wfss-recommended-strategies">WFSS observation sequence</a> typically consists of a direct image followed by a grism observation in the same blocking filter to help identify the sources in the field. In program 2079, the exposure sequence follows the pattern: direct image -&gt; GR150R -&gt; direct image -&gt; GR150C -&gt; direct image.</p>
 <p><strong>Use case</strong>: use MAST to download data products.<br>

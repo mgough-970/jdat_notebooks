@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
@@ -490,13 +490,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="running-individual-pipeline-steps">
+  <section class="tex2jax_ignore mathjax_ignore" id="running-individual-pipeline-steps">
 <h1>Running Individual Pipeline Steps<a class="headerlink" href="#running-individual-pipeline-steps" title="Link to this heading">#</a></h1>
 <p>This notebook walks through calibrating the data with individual pipeline steps (AssignWCS and FlatField) rather than running the entire pipeline stage.</p>
 <p><strong>Use case</strong>: When using a package outside of the standard JWST pipeline, there may be certain steps that are still helpful to utilize within the JWST pipeline. Here we show the most commonly run individual steps, AssignWCS and FlatField. AssignWCS determines and stores the WCS (World Coordinate System) information, and FlatField removes <a class="reference external" href="https://jwst-docs.stsci.edu/known-issues-with-jwst-data/niriss-known-issues#NIRISSKnownIssues-artifactsArtifacts">detector features</a>.<br>
@@ -528,6 +522,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: CRDS_PATH=crds_cache
+env: CRDS_SERVER_URL=https://jwst-crds.stsci.edu
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,6 +555,17 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">crds</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JWST Pipeliene Version:&#39;</span><span class="p">,</span> <span class="n">jwst</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;CRDS Context:&#39;</span><span class="p">,</span> <span class="n">crds</span><span class="o">.</span><span class="n">get_context_name</span><span class="p">(</span><span class="s1">&#39;jwst&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JWST Pipeliene Version: 1.18.1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Calibration SW Found: jwst 1.18.1 (/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/jwst-1.18.1.dist-info)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS Context: jwst_1364.pmap
 </pre></div>
 </div>
 </div>
@@ -620,6 +631,64 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:32,662 - stpipe.AssignWcsStep - INFO - AssignWcsStep instance created.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:32,756 - stpipe.AssignWcsStep - INFO - Step AssignWcsStep running with args (&#39;data/jw02079004002_02101_00001_nis_rate.fits&#39;,).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:32,759 - stpipe.AssignWcsStep - INFO - Step AssignWcsStep parameters are:
+  pre_hooks: []
+  post_hooks: []
+  output_file: None
+  output_dir: data/calibrated_steps/
+  output_ext: .fits
+  output_use_model: False
+  output_use_index: True
+  save_results: True
+  skip: False
+  suffix: None
+  search_output_file: True
+  input_dir: &#39;&#39;
+  sip_approx: True
+  sip_max_pix_error: 0.01
+  sip_degree: None
+  sip_max_inv_pix_error: 0.01
+  sip_inv_degree: None
+  sip_npoints: 12
+  slit_y_low: -0.55
+  slit_y_high: 0.55
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:32,967 - stpipe.AssignWcsStep - INFO - Offsets from filteroffset file are 0.0397, -0.0651
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,030 - stpipe.AssignWcsStep - INFO - Update S_REGION to POLYGON ICRS  53.148020701 -27.806991890 53.187895566 -27.794536632 53.173722708 -27.759581559 53.133883845 -27.772015679
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,032 - stpipe.AssignWcsStep - INFO - assign_wcs updated S_REGION to POLYGON ICRS  53.148020701 -27.806991890 53.187895566 -27.794536632 53.173722708 -27.759581559 53.133883845 -27.772015679
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,032 - stpipe.AssignWcsStep - INFO - COMPLETED assign_wcs
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,088 - CRDS - INFO -  Calibration SW Found: jwst 1.18.1 (/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/jwst-1.18.1.dist-info)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,362 - stpipe.AssignWcsStep - INFO - Results used CRDS context: jwst_1364.pmap
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,532 - stpipe.AssignWcsStep - INFO - Saved model in data/calibrated_steps/jw02079004002_02101_00001_nis_assignwcsstep.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,533 - stpipe.AssignWcsStep - INFO - Step AssignWcsStep done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,533 - stpipe - INFO - Results used jwst version: 1.18.1
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -627,6 +696,11 @@ document.write(`
 <span class="c1"># if this is zero, check the log message above for any errors that may have occurred during the calibration</span>
 <span class="n">wcsstep_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir_out</span><span class="p">,</span> <span class="s1">&#39;*assignwcsstep*&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wcsstep_files</span><span class="p">),</span> <span class="s1">&#39;assignwcsstep files written&#39;</span><span class="p">)</span> <span class="c1"># 1 file should have been written</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 assignwcsstep files written
 </pre></div>
 </div>
 </div>
@@ -644,6 +718,56 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,661 - stpipe.FlatFieldStep - INFO - FlatFieldStep instance created.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,761 - stpipe.FlatFieldStep - INFO - Step FlatFieldStep running with args (&#39;data/calibrated_steps/jw02079004002_02101_00001_nis_assignwcsstep.fits&#39;,).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,763 - stpipe.FlatFieldStep - INFO - Step FlatFieldStep parameters are:
+  pre_hooks: []
+  post_hooks: []
+  output_file: None
+  output_dir: data/calibrated_steps/
+  output_ext: .fits
+  output_use_model: False
+  output_use_index: True
+  save_results: True
+  skip: False
+  suffix: None
+  search_output_file: True
+  input_dir: &#39;&#39;
+  save_interpolated_flat: False
+  user_supplied_flat: None
+  inverse: False
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,963 - stpipe.FlatFieldStep - INFO - Using FLAT reference file: crds_cache/references/jwst/niriss/jwst_niriss_flat_0261.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,963 - stpipe.FlatFieldStep - INFO - No reference found for type FFLAT
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,964 - stpipe.FlatFieldStep - INFO - No reference found for type SFLAT
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:33,964 - stpipe.FlatFieldStep - INFO - No reference found for type DFLAT
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:34,121 - stpipe.FlatFieldStep - INFO - Results used CRDS context: jwst_1364.pmap
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:34,305 - stpipe.FlatFieldStep - INFO - Saved model in data/calibrated_steps/jw02079004002_02101_00001_nis_flatfieldstep.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:34,306 - stpipe.FlatFieldStep - INFO - Step FlatFieldStep done
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-11 17:52:34,307 - stpipe - INFO - Results used jwst version: 1.18.1
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,6 +775,11 @@ document.write(`
 <span class="c1"># if this is zero, check the log message above for any errors that may have occurred during the calibration</span>
 <span class="n">flatfield_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir_out</span><span class="p">,</span> <span class="s1">&#39;*flatfieldstep*&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flatfield_files</span><span class="p">),</span> <span class="s1">&#39;flatfieldstep files written&#39;</span><span class="p">)</span> <span class="c1"># 1 file should have been written (matching the wcs step)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 flatfieldstep files written
 </pre></div>
 </div>
 </div>
@@ -682,6 +811,9 @@ document.write(`
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/e0b607d3752905848390d7fb79f4ad4a69b5763aa7adbd1d98d43fb42e958802.png" src="../../../_images/e0b607d3752905848390d7fb79f4ad4a69b5763aa7adbd1d98d43fb42e958802.png" />
 </div>
 </div>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/spacetelescope/notebooks/master/assets/stsci_pri_combo_mark_horizonal_white_bkgd.png"><img alt="Space Telescope Logo" src="https://raw.githubusercontent.com/spacetelescope/notebooks/master/assets/stsci_pri_combo_mark_horizonal_white_bkgd.png" style="width: 200px;" />

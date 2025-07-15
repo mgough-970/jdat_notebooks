@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/main.css?v=b44a18d9" />
@@ -491,13 +491,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="draft-notebook-title">
+  <section class="tex2jax_ignore mathjax_ignore" id="draft-notebook-title">
 <h1>Draft: Notebook title<a class="headerlink" href="#draft-notebook-title" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <section id="imports">
@@ -553,6 +547,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table masked=True length=1</i>
+<table id="table140600283119696" class="table-striped table-bordered table-condensed">
+<thead><tr><th>obsID</th><th>obs_collection</th><th>dataproduct_type</th><th>obs_id</th><th>description</th><th>type</th><th>dataURI</th><th>productType</th><th>productGroupDescription</th><th>productSubGroupDescription</th><th>productDocumentationURL</th><th>project</th><th>prvversion</th><th>proposal_id</th><th>productFilename</th><th>size</th><th>parent_obsid</th><th>dataRights</th><th>calib_level</th><th>filters</th></tr></thead>
+<thead><tr><th>str6</th><th>str6</th><th>str10</th><th>str36</th><th>str59</th><th>str1</th><th>str110</th><th>str7</th><th>str28</th><th>str8</th><th>str1</th><th>str6</th><th>str1</th><th>str7</th><th>str44</th><th>int64</th><th>str6</th><th>str6</th><th>int64</th><th>str6</th></tr></thead>
+<tr><td>549936</td><td>Kepler</td><td>timeseries</td><td>kplr008957091_lc_Q000000000011111111</td><td>Target Pixel Long Cadence (TPL) - Q14</td><td>C</td><td>mast:KEPLER/url/missions/kepler/target_pixel_files/0089/008957091/kplr008957091-2012277125453_lpd-targ.fits.gz</td><td>SCIENCE</td><td>Minimum Recommended Products</td><td>LPD-TARG</td><td>--</td><td>Kepler</td><td>--</td><td>GO30032</td><td>kplr008957091-2012277125453_lpd-targ.fits.gz</td><td>4365449</td><td>549936</td><td>PUBLIC</td><td>2</td><td>KEPLER</td></tr>
+</table></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,6 +562,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:KEPLER/url/missions/kepler/target_pixel_files/0089/008957091/kplr008957091-2012277125453_lpd-targ.fits.gz to ./mastDownload/Kepler/kplr008957091_lc_Q000000000011111111/kplr008957091-2012277125453_lpd-targ.fits.gz ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output text_html"><div><i>Table length=1</i>
+<table id="table140600225912656" class="table-striped table-bordered table-condensed">
+<thead><tr><th>Local Path</th><th>Status</th><th>Message</th><th>URL</th></tr></thead>
+<thead><tr><th>str103</th><th>str8</th><th>object</th><th>object</th></tr></thead>
+<tr><td>./mastDownload/Kepler/kplr008957091_lc_Q000000000011111111/kplr008957091-2012277125453_lpd-targ.fits.gz</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
+</table></div></div></div>
 </div>
 </section>
 <section id="file-information">

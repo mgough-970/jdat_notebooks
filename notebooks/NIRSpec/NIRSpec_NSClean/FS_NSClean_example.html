@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
@@ -503,13 +503,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<p><a id="top"></a></p>
+  <p><a id="top"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="cleaning-residual-1-f-noise-in-nirspec-fs-products-with-nsclean">
 <h1>Cleaning Residual 1/f Noise in NIRSpec FS Products with NSClean<a class="headerlink" href="#cleaning-residual-1-f-noise-in-nirspec-fs-products-with-nsclean" title="Link to this heading">#</a></h1>
 <hr style="border:1px solid black">
@@ -593,6 +587,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS cache location: /home/runner/crds_cache
+JWST Calibration Pipeline Version=1.14.0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -665,6 +665,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading jw02757002001_03104_00001_nrs1_rate.fits
+The file jw02757002001_03104_00001_nrs1_rate.fits already exists in the directory. Skipping download.
+Downloading jw01189001001_04101_00001_nrs1_rate.fits
+The file jw01189001001_04101_00001_nrs1_rate.fits already exists in the directory. Skipping download.
+Downloading jw01189001001_04101_00001_nrs2_rate.fits
+The file jw01189001001_04101_00001_nrs2_rate.fits already exists in the directory. Skipping download.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="running-spec2pipeline-without-nsclean-original-data">
@@ -707,6 +717,26 @@ document.write(`
 
 <span class="n">end</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run time: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.0</span><span class="p">,</span> <span class="s2">&quot; min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw02757002001_03104_00001_nrs1_rate.fits...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw02757002001_03104_00001_nrs1_cal.fits
+Saved jw02757002001_03104_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs1_rate.fits...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs1_cal.fits
+Saved jw01189001001_04101_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs2_rate.fits...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs2_cal.fits
+Saved jw01189001001_04101_00001_nrs2_x1d.fits
+Run time:  0.6533333333333334  min
 </pre></div>
 </div>
 </div>
@@ -768,6 +798,32 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw02757002001_03104_00001_nrs1_rate.fits...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw02757002001_03104_00001_nrs1_mask.fits
+Saved jw02757002001_03104_00001_nrs1_nsclean.fits
+Saved jw02757002001_03104_00001_nrs1_cal.fits
+Saved jw02757002001_03104_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs1_rate.fits...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs1_mask.fits
+Saved jw01189001001_04101_00001_nrs1_nsclean.fits
+Saved jw01189001001_04101_00001_nrs1_cal.fits
+Saved jw01189001001_04101_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs2_rate.fits...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs2_mask.fits
+Saved jw01189001001_04101_00001_nrs2_nsclean.fits
+Saved jw01189001001_04101_00001_nrs2_cal.fits
+Saved jw01189001001_04101_00001_nrs2_x1d.fits
+Run time:  3.5833333333333335  min
+</pre></div>
+</div>
+</div>
 </div>
 <div class="alert alert-block alert-warning">
 <b>Warning:</b> 
@@ -797,6 +853,11 @@ document.write(`
     <span class="n">plot_dark_data</span><span class="p">(</span><span class="n">mast_products_dir</span> <span class="o">+</span> <span class="n">rate_file</span><span class="p">,</span> <span class="n">mask_file</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c7f340d43229dd2805067ab8f06b225a37d6f5778a522397177d2edb67b71bae.png" src="../../../_images/c7f340d43229dd2805067ab8f06b225a37d6f5778a522397177d2edb67b71bae.png" />
+<img alt="../../../_images/69c90e6c595f80085d3078a353742de4c7dfbfa5b4798135151d776ef635f87a.png" src="../../../_images/69c90e6c595f80085d3078a353742de4c7dfbfa5b4798135151d776ef635f87a.png" />
+<img alt="../../../_images/a2765e77ef5f0abe13e7e19c672e93cbac3694c0c5da9b8077ef28646261ea66.png" src="../../../_images/a2765e77ef5f0abe13e7e19c672e93cbac3694c0c5da9b8077ef28646261ea66.png" />
 </div>
 </div>
 </section>
@@ -828,6 +889,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/3b471b1160c115e622c1f04442bd2628e05ac761509fbff713f2b980cc1fb708.png" src="../../../_images/3b471b1160c115e622c1f04442bd2628e05ac761509fbff713f2b980cc1fb708.png" />
+<img alt="../../../_images/3ac731a74f36c76acf2daa4812570fd43faef1e571855cd89933a74943307c1f.png" src="../../../_images/3ac731a74f36c76acf2daa4812570fd43faef1e571855cd89933a74943307c1f.png" />
+<img alt="../../../_images/95bd54eeb88287f603f1f129c267819990bb88d272f17bbf933f79fa4e4c6cb4.png" src="../../../_images/95bd54eeb88287f603f1f129c267819990bb88d272f17bbf933f79fa4e4c6cb4.png" />
+</div>
 </div>
 <p>Compare the extracted spectrum from the cleaned data to the spectrum extracted from the original rate file. Note that the following plots for the full-frame data display all FSs, but the primary source is in FS S200A1.</p>
 <div class="cell docutils container">
@@ -856,6 +922,13 @@ document.write(`
         <span class="n">plot_spectra</span><span class="p">([</span><span class="n">original</span><span class="p">,</span> <span class="n">cleaned</span><span class="p">],</span> <span class="n">ext_num</span><span class="o">=</span><span class="n">slit</span><span class="p">,</span> <span class="n">scale_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/00c62a68ec2b6474ff1d3ab0c8d0afb7b67936c00b0fcf4be4a87e4e2cb20e5a.png" src="../../../_images/00c62a68ec2b6474ff1d3ab0c8d0afb7b67936c00b0fcf4be4a87e4e2cb20e5a.png" />
+<img alt="../../../_images/b4307e86e9d9202fff7f44c41962029d8fc74263110923b69e32e8c9389f5202.png" src="../../../_images/b4307e86e9d9202fff7f44c41962029d8fc74263110923b69e32e8c9389f5202.png" />
+<img alt="../../../_images/120786860c7016609844726e4773ca4166cf2d94ca4e0be6f29098e7354bcae1.png" src="../../../_images/120786860c7016609844726e4773ca4166cf2d94ca4e0be6f29098e7354bcae1.png" />
+<img alt="../../../_images/3a73a7f58a2beaaafa20749dde751315c836cf36394a4b72d8f53adda4092900.png" src="../../../_images/3a73a7f58a2beaaafa20749dde751315c836cf36394a4b72d8f53adda4092900.png" />
+<img alt="../../../_images/c5fd5c6d1794e0908fd2dfd781ea5a5b41c7ac866cbafb189323771865a9d0d4.png" src="../../../_images/c5fd5c6d1794e0908fd2dfd781ea5a5b41c7ac866cbafb189323771865a9d0d4.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -892,6 +965,10 @@ document.write(`
         <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/74b10c98c0a0be15023ce72f879d7c1d5499508a76ebd31214fbc55429ba11bf.png" src="../../../_images/74b10c98c0a0be15023ce72f879d7c1d5499508a76ebd31214fbc55429ba11bf.png" />
+<img alt="../../../_images/80dcc7c72374ff2b0847e58042da2e7b1dffd678ace6bb3d0e2d72bc70caa98c.png" src="../../../_images/80dcc7c72374ff2b0847e58042da2e7b1dffd678ace6bb3d0e2d72bc70caa98c.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -959,6 +1036,32 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw02757002001_03104_00001_nrs1_rate.fits... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw02757002001_03104_00001_nrs1_mask.fits
+Saved jw02757002001_03104_00001_nrs1_nsclean.fits
+Saved jw02757002001_03104_00001_nrs1_cal.fits
+Saved jw02757002001_03104_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs1_rate.fits... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs1_mask.fits
+Saved jw01189001001_04101_00001_nrs1_nsclean.fits
+Saved jw01189001001_04101_00001_nrs1_cal.fits
+Saved jw01189001001_04101_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs2_rate.fits... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs2_mask.fits
+Saved jw01189001001_04101_00001_nrs2_nsclean.fits
+Saved jw01189001001_04101_00001_nrs2_cal.fits
+Saved jw01189001001_04101_00001_nrs2_x1d.fits
+Run time:  4.836666666666667  min
+</pre></div>
+</div>
+</div>
 </div>
 <section id="verify-the-mask-alternate-mask">
 <h3>6.1 Verify the Mask (Alternate Mask) <a name="verify_alternate_mask"></a><a class="headerlink" href="#verify-the-mask-alternate-mask" title="Link to this heading">#</a></h3>
@@ -984,6 +1087,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/0ac0046e7dd81caa11c168a4cc741cbafc3694ecc1fa77fc49929adec8fede9d.png" src="../../../_images/0ac0046e7dd81caa11c168a4cc741cbafc3694ecc1fa77fc49929adec8fede9d.png" />
+<img alt="../../../_images/458f6df9398c01f03ff6281b3246afd69b11127afe97987630b8a1fb3774b0c5.png" src="../../../_images/458f6df9398c01f03ff6281b3246afd69b11127afe97987630b8a1fb3774b0c5.png" />
+<img alt="../../../_images/e350827e49bc5f4c2cffcfd05d61248e66e2c40ff60c1d6af5a73870f6aecb6e.png" src="../../../_images/e350827e49bc5f4c2cffcfd05d61248e66e2c40ff60c1d6af5a73870f6aecb6e.png" />
+</div>
 </div>
 </section>
 <section id="comparing-original-vs-cleaned-data-alternate-mask">
@@ -1008,6 +1116,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/6a8d61ac778bc7d5f2a98a827895f6108fa8340d296419be6ae43d8419c51014.png" src="../../../_images/6a8d61ac778bc7d5f2a98a827895f6108fa8340d296419be6ae43d8419c51014.png" />
+<img alt="../../../_images/dc238385b7b15855fcb8880d686aa56354e6f6e0288c968619b821d6b1889310.png" src="../../../_images/dc238385b7b15855fcb8880d686aa56354e6f6e0288c968619b821d6b1889310.png" />
+<img alt="../../../_images/d03b41d70c22b35ae76402ecbb4f5a9080cf61f14fe42a81a17c56ea8fe1f7e3.png" src="../../../_images/d03b41d70c22b35ae76402ecbb4f5a9080cf61f14fe42a81a17c56ea8fe1f7e3.png" />
+</div>
 </div>
 <p>Compare the extracted spectrum from the cleaned data to the spectrum extracted from the original rate file. Note that the following plots for the full-frame data display all FSs, but the primary source is in FS S200A1.</p>
 <div class="cell docutils container">
@@ -1030,6 +1143,13 @@ document.write(`
         <span class="n">plot_spectra</span><span class="p">([</span><span class="n">original</span><span class="p">,</span> <span class="n">cleaned</span><span class="p">],</span> <span class="n">ext_num</span><span class="o">=</span><span class="n">slit</span><span class="p">,</span> <span class="n">scale_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/b7d6bbeb63c8a61a749e5a646281096111f4edb48c90fd56db4457e5c3ef1b67.png" src="../../../_images/b7d6bbeb63c8a61a749e5a646281096111f4edb48c90fd56db4457e5c3ef1b67.png" />
+<img alt="../../../_images/0c15da8807d6de2a4e720f45811ac27d8273bf577248e1f589dbdc99d66eea92.png" src="../../../_images/0c15da8807d6de2a4e720f45811ac27d8273bf577248e1f589dbdc99d66eea92.png" />
+<img alt="../../../_images/503cac7dc5c9a03c2ab7d485fdf824c4dc3942f6e826af693f16b39e37866a7f.png" src="../../../_images/503cac7dc5c9a03c2ab7d485fdf824c4dc3942f6e826af693f16b39e37866a7f.png" />
+<img alt="../../../_images/7d76fc60440339217c8d9c2dce942115ea8248e8eaf038019072b2c5d451cb80.png" src="../../../_images/7d76fc60440339217c8d9c2dce942115ea8248e8eaf038019072b2c5d451cb80.png" />
+<img alt="../../../_images/76b62e36584b96294b4e64dd25d8bec8472df383926c1439791d3fa79aafa28b.png" src="../../../_images/76b62e36584b96294b4e64dd25d8bec8472df383926c1439791d3fa79aafa28b.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1067,6 +1187,10 @@ document.write(`
         <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d2853b79ae700bcad1a1ee79096f4f5313e24c29d732eb1382111b58d06ce42f.png" src="../../../_images/d2853b79ae700bcad1a1ee79096f4f5313e24c29d732eb1382111b58d06ce42f.png" />
+<img alt="../../../_images/0af181b0660fa86cd8f088fc72726651d99a4d28fbc8e343fdc033253ced394a.png" src="../../../_images/0af181b0660fa86cd8f088fc72726651d99a4d28fbc8e343fdc033253ced394a.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1125,6 +1249,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved modified mask as: ./stage2_nsclean_modified/jw02757002001_03104_00001_nrs1_mask_modified.fits
+Saved modified mask as: ./stage2_nsclean_modified/jw01189001001_04101_00001_nrs1_mask_modified.fits
+Saved modified mask as: ./stage2_nsclean_modified/jw01189001001_04101_00001_nrs2_mask_modified.fits
+</pre></div>
+</div>
+</div>
 </div>
 <section id="verify-the-mask-hand-modified-mask">
 <h3>7.1 Verify the Mask (Hand-Modified Mask) <a name="verify_modified_mask"></a><a class="headerlink" href="#verify-the-mask-hand-modified-mask" title="Link to this heading">#</a></h3>
@@ -1149,6 +1280,11 @@ document.write(`
     <span class="n">plot_dark_data</span><span class="p">(</span><span class="n">mast_products_dir</span> <span class="o">+</span> <span class="n">rate_file</span><span class="p">,</span> <span class="n">mask_file</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/0362818de98ebd0d4763216f9bf67062281adb675a089241dc57a715753b2336.png" src="../../../_images/0362818de98ebd0d4763216f9bf67062281adb675a089241dc57a715753b2336.png" />
+<img alt="../../../_images/d3f8ceef67a4ae92e8a761652d90df77106c9ab2b22c5e713b71c120c1759a95.png" src="../../../_images/d3f8ceef67a4ae92e8a761652d90df77106c9ab2b22c5e713b71c120c1759a95.png" />
+<img alt="../../../_images/a2765e77ef5f0abe13e7e19c672e93cbac3694c0c5da9b8077ef28646261ea66.png" src="../../../_images/a2765e77ef5f0abe13e7e19c672e93cbac3694c0c5da9b8077ef28646261ea66.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1189,6 +1325,32 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw02757002001_03104_00001_nrs1_rate.fits... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw02757002001_03104_00001_nrs1_mask.fits
+Saved jw02757002001_03104_00001_nrs1_nsclean.fits
+Saved jw02757002001_03104_00001_nrs1_cal.fits
+Saved jw02757002001_03104_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs1_rate.fits... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs1_mask.fits
+Saved jw01189001001_04101_00001_nrs1_nsclean.fits
+Saved jw01189001001_04101_00001_nrs1_cal.fits
+Saved jw01189001001_04101_00001_nrs1_x1d.fits
+Processing jw01189001001_04101_00001_nrs2_rate.fits... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01189001001_04101_00001_nrs2_mask.fits
+Saved jw01189001001_04101_00001_nrs2_nsclean.fits
+Saved jw01189001001_04101_00001_nrs2_cal.fits
+Saved jw01189001001_04101_00001_nrs2_x1d.fits
+Run time:  4.206666666666667  min
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="comparing-original-vs-cleaned-data-hand-modified-mask">
@@ -1213,6 +1375,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/fe89712a16b0f667745ec23050f0285b7c7d8e64770e7776b9a051ffda1107dd.png" src="../../../_images/fe89712a16b0f667745ec23050f0285b7c7d8e64770e7776b9a051ffda1107dd.png" />
+<img alt="../../../_images/102376b371c9f0909fc0e878d14e51352c569bdfe68a678dce73d3595cc15c50.png" src="../../../_images/102376b371c9f0909fc0e878d14e51352c569bdfe68a678dce73d3595cc15c50.png" />
+<img alt="../../../_images/1bc7527f0569e0916ded2489f0940e91cb9294a270e10e9cdd9e7773f00e9855.png" src="../../../_images/1bc7527f0569e0916ded2489f0940e91cb9294a270e10e9cdd9e7773f00e9855.png" />
+</div>
 </div>
 <p>Compare the extracted spectrum from the cleaned data and compare it to the spectrum extracted from the original rate file.</p>
 <div class="cell docutils container">
@@ -1235,6 +1402,13 @@ document.write(`
         <span class="n">plot_spectra</span><span class="p">([</span><span class="n">original</span><span class="p">,</span> <span class="n">cleaned</span><span class="p">],</span> <span class="n">ext_num</span><span class="o">=</span><span class="n">slit</span><span class="p">,</span> <span class="n">scale_percent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/cf09702476c00e94374a01dbf058d0daabab76729a90cb078ffef58fb0a4bd1b.png" src="../../../_images/cf09702476c00e94374a01dbf058d0daabab76729a90cb078ffef58fb0a4bd1b.png" />
+<img alt="../../../_images/e3b110f8367554a38ce22d3657c5e65c504d081d62f0a585fefe08de2d691a32.png" src="../../../_images/e3b110f8367554a38ce22d3657c5e65c504d081d62f0a585fefe08de2d691a32.png" />
+<img alt="../../../_images/d0d7ce3f4071904de1571760a14c1d6f9c2cc9daf6f76256b2773f73217a9e48.png" src="../../../_images/d0d7ce3f4071904de1571760a14c1d6f9c2cc9daf6f76256b2773f73217a9e48.png" />
+<img alt="../../../_images/bfd01c5c85b6c6879b22d34083762767f6b651fb8a41122942ea87b46ae3ff4f.png" src="../../../_images/bfd01c5c85b6c6879b22d34083762767f6b651fb8a41122942ea87b46ae3ff4f.png" />
+<img alt="../../../_images/c5fd5c6d1794e0908fd2dfd781ea5a5b41c7ac866cbafb189323771865a9d0d4.png" src="../../../_images/c5fd5c6d1794e0908fd2dfd781ea5a5b41c7ac866cbafb189323771865a9d0d4.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1274,6 +1448,10 @@ document.write(`
         <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8d5eaa877168ade8baee304938b642ac5e4d92d812128e64569a22e68d04c611.png" src="../../../_images/8d5eaa877168ade8baee304938b642ac5e4d92d812128e64569a22e68d04c611.png" />
+<img alt="../../../_images/8b45da83fe1fe82e5ec024da13218f22e8991845a59255e58175f420df8faf30.png" src="../../../_images/8b45da83fe1fe82e5ec024da13218f22e8991845a59255e58175f420df8faf30.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1354,6 +1532,9 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/0228c2097f80df306baf9b68a27f22f02162b4b53cc225341dec5f97735ee784.png" src="../../../_images/0228c2097f80df306baf9b68a27f22f02162b4b53cc225341dec5f97735ee784.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1586,6 +1767,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/cb5e88d5dabfd6c2ad0e1500ec2bd77edef25fb2e34b2db7b891e6cfdb27d25a.png" src="../../../_images/cb5e88d5dabfd6c2ad0e1500ec2bd77edef25fb2e34b2db7b891e6cfdb27d25a.png" />
+<img alt="../../../_images/9fa2363cde3dc0bb7d031a2386183972edf280ad664f16d58ee9d358d592cd51.png" src="../../../_images/9fa2363cde3dc0bb7d031a2386183972edf280ad664f16d58ee9d358d592cd51.png" />
+<img alt="../../../_images/a0de5e7659e185aae64968d7e099e149a130f76b41325565c9aeaebf71937980.png" src="../../../_images/a0de5e7659e185aae64968d7e099e149a130f76b41325565c9aeaebf71937980.png" />
+<img alt="../../../_images/c725e0817ce63124f3d421b19f636aac6884e8aba414216b7fea05bab1b85953.png" src="../../../_images/c725e0817ce63124f3d421b19f636aac6884e8aba414216b7fea05bab1b85953.png" />
+<img alt="../../../_images/89ef9dafdb08dc25dac86fe1ee6852190252a0f9bd099e42fde60fce8f771261.png" src="../../../_images/89ef9dafdb08dc25dac86fe1ee6852190252a0f9bd099e42fde60fce8f771261.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1613,6 +1801,9 @@ document.write(`
         <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/540d471eb14d0a688641ead01712c2e5ddf830308d42cd501e85eb089d00a0f7.png" src="../../../_images/540d471eb14d0a688641ead01712c2e5ddf830308d42cd501e85eb089d00a0f7.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
