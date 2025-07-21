@@ -503,7 +503,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a name="top"></a></p>
+  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
+<p><a name="top"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="cleaning-residual-1-f-noise-in-nirspec-ifu-products-with-nsclean">
 <h1>Cleaning Residual 1/f Noise in NIRSpec IFU Products with NSClean<a class="headerlink" href="#cleaning-residual-1-f-noise-in-nirspec-ifu-products-with-nsclean" title="Link to this heading">#</a></h1>
 <hr style="border:1px solid black">
@@ -587,12 +593,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS cache location: /home/runner/crds_cache
-JWST Calibration Pipeline Version=1.14.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -655,14 +655,6 @@ JWST Calibration Pipeline Version=1.14.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading jw01335004001_03101_00002_nrs1_rate.fits
-The file jw01335004001_03101_00002_nrs1_rate.fits already exists in the directory. Skipping download.
-Downloading jw01335004001_03101_00002_nrs2_rate.fits
-The file jw01335004001_03101_00002_nrs2_rate.fits already exists in the directory. Skipping download.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="running-spec2pipeline-without-nsclean-original-data">
@@ -705,21 +697,6 @@ The file jw01335004001_03101_00002_nrs2_rate.fits already exists in the director
 
 <span class="n">end</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run time: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.0</span><span class="p">,</span> <span class="s2">&quot; min&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw01335004001_03101_00002_nrs1_rate.fits...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs1_cal.fits
-Saved jw01335004001_03101_00002_nrs1_x1d.fits
-Processing jw01335004001_03101_00002_nrs2_rate.fits...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs2_cal.fits
-Saved jw01335004001_03101_00002_nrs2_x1d.fits
-Run time:  13.221666666666666  min
 </pre></div>
 </div>
 </div>
@@ -781,25 +758,6 @@ Run time:  13.221666666666666  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw01335004001_03101_00002_nrs1_rate.fits...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs1_mask.fits
-Saved jw01335004001_03101_00002_nrs1_nsclean.fits
-Saved jw01335004001_03101_00002_nrs1_cal.fits
-Saved jw01335004001_03101_00002_nrs1_x1d.fits
-Processing jw01335004001_03101_00002_nrs2_rate.fits...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs2_mask.fits
-Saved jw01335004001_03101_00002_nrs2_nsclean.fits
-Saved jw01335004001_03101_00002_nrs2_cal.fits
-Saved jw01335004001_03101_00002_nrs2_x1d.fits
-Run time:  16.546666666666667  min
-</pre></div>
-</div>
-</div>
 </div>
 <div class="alert alert-block alert-warning">
 <b>Warning:</b> 
@@ -825,10 +783,6 @@ Run time:  16.546666666666667  min
     <span class="n">plot_dark_data</span><span class="p">(</span><span class="n">mast_products_dir</span> <span class="o">+</span> <span class="n">rate_file</span><span class="p">,</span> <span class="n">mask_file</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/4eb42eb1423a29fb468aaa2b8c79dba474a254415996679c595110b90c331b7c.png" src="../../../_images/4eb42eb1423a29fb468aaa2b8c79dba474a254415996679c595110b90c331b7c.png" />
-<img alt="../../../_images/a17fed16512836494b96bb4db667b4e0520d2f9426a871d26ccf884efade065a.png" src="../../../_images/a17fed16512836494b96bb4db667b4e0520d2f9426a871d26ccf884efade065a.png" />
 </div>
 </div>
 </section>
@@ -857,10 +811,6 @@ Run time:  16.546666666666667  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/077c9fb16343dc1d74b9e797108d9ca3da9097f6c08f5d10cc2e8c3592c0bce2.png" src="../../../_images/077c9fb16343dc1d74b9e797108d9ca3da9097f6c08f5d10cc2e8c3592c0bce2.png" />
-<img alt="../../../_images/41597acdebbd825691976676a78284dd20602af7a29589f2dfc8717e75cf1f96.png" src="../../../_images/41597acdebbd825691976676a78284dd20602af7a29589f2dfc8717e75cf1f96.png" />
-</div>
 </div>
 <p>Compare the extracted spectrum from the cleaned data to the spectrum extracted from the original rate file.</p>
 <div class="cell docutils container">
@@ -883,10 +833,6 @@ Run time:  16.546666666666667  min
     <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/26907b04cd5fa99ac30f3a4b67ae18b2962d4d03fe433e22504313329208b18c.png" src="../../../_images/26907b04cd5fa99ac30f3a4b67ae18b2962d4d03fe433e22504313329208b18c.png" />
-<img alt="../../../_images/cffffb63b0f0751c5bcb22307b6b8b0f517873882d72c0faae3e78638c64d623.png" src="../../../_images/cffffb63b0f0751c5bcb22307b6b8b0f517873882d72c0faae3e78638c64d623.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -950,25 +896,6 @@ Run time:  16.546666666666667  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw01335004001_03101_00002_nrs1_rate.fits... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs1_mask.fits
-Saved jw01335004001_03101_00002_nrs1_nsclean.fits
-Saved jw01335004001_03101_00002_nrs1_cal.fits
-Saved jw01335004001_03101_00002_nrs1_x1d.fits
-Processing jw01335004001_03101_00002_nrs2_rate.fits... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs2_mask.fits
-Saved jw01335004001_03101_00002_nrs2_nsclean.fits
-Saved jw01335004001_03101_00002_nrs2_cal.fits
-Saved jw01335004001_03101_00002_nrs2_x1d.fits
-Run time:  13.986666666666668  min
-</pre></div>
-</div>
-</div>
 </div>
 <section id="verify-the-mask-alternate-mask">
 <h3>6.1 Verify the Mask (Alternate Mask) <a name="verify_alternate_mask"></a><a class="headerlink" href="#verify-the-mask-alternate-mask" title="Link to this heading">#</a></h3>
@@ -989,10 +916,6 @@ Run time:  13.986666666666668  min
     <span class="n">plot_dark_data</span><span class="p">(</span><span class="n">mast_products_dir</span> <span class="o">+</span> <span class="n">rate_file</span><span class="p">,</span> <span class="n">mask_file</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/2886d9228d76e7a5d1177011ab9b01c2ec9c0bd010ec778dbd17da7afab00ca2.png" src="../../../_images/2886d9228d76e7a5d1177011ab9b01c2ec9c0bd010ec778dbd17da7afab00ca2.png" />
-<img alt="../../../_images/d214819fdf4614f710ec17d63b0e72fd75374b5918e8307f4fb7eab8a23c413c.png" src="../../../_images/d214819fdf4614f710ec17d63b0e72fd75374b5918e8307f4fb7eab8a23c413c.png" />
 </div>
 </div>
 </section>
@@ -1015,10 +938,6 @@ Run time:  13.986666666666668  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/8b37f37b7442562bb8efb2e49a1c345b153c6d391ee5101907e83be455d88330.png" src="../../../_images/8b37f37b7442562bb8efb2e49a1c345b153c6d391ee5101907e83be455d88330.png" />
-<img alt="../../../_images/8cbb86b417cce1829e5a0410d1f65384edd2cb9df700516a6bc8e5cfe2a39330.png" src="../../../_images/8cbb86b417cce1829e5a0410d1f65384edd2cb9df700516a6bc8e5cfe2a39330.png" />
-</div>
 </div>
 <p>Compare the extracted spectrum from the cleaned data to the spectrum extracted from the original rate file.</p>
 <div class="cell docutils container">
@@ -1036,10 +955,6 @@ Run time:  13.986666666666668  min
     <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/dd2ebd56b71a83185e141dc4bb0b54e0e15422f21f15b0bd3e98ddf21bc744bc.png" src="../../../_images/dd2ebd56b71a83185e141dc4bb0b54e0e15422f21f15b0bd3e98ddf21bc744bc.png" />
-<img alt="../../../_images/5284e61d1b168a44f932ae7f2f150ae2f41cf32e8cf7c394a35073f2bad2418f.png" src="../../../_images/5284e61d1b168a44f932ae7f2f150ae2f41cf32e8cf7c394a35073f2bad2418f.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1109,12 +1024,6 @@ Run time:  13.986666666666668  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved modified mask as: ./stage2_nsclean_modified/jw01335004001_03101_00002_nrs1_mask_modified.fits
-Saved modified mask as: ./stage2_nsclean_modified/jw01335004001_03101_00002_nrs2_mask_modified.fits
-</pre></div>
-</div>
-</div>
 </div>
 <section id="verify-the-mask-hand-modified-mask">
 <h3>7.1 Verify the Mask (Hand-Modified Mask) <a name="verify_modified_mask"></a><a class="headerlink" href="#verify-the-mask-hand-modified-mask" title="Link to this heading">#</a></h3>
@@ -1135,10 +1044,6 @@ Saved modified mask as: ./stage2_nsclean_modified/jw01335004001_03101_00002_nrs2
     <span class="n">plot_dark_data</span><span class="p">(</span><span class="n">mast_products_dir</span> <span class="o">+</span> <span class="n">rate_file</span><span class="p">,</span> <span class="n">mask_file</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/59b7c7c4e6d7c1921452c5083c2ea46401faa02d5a1008235de5e8ee7fdc3112.png" src="../../../_images/59b7c7c4e6d7c1921452c5083c2ea46401faa02d5a1008235de5e8ee7fdc3112.png" />
-<img alt="../../../_images/26ba4eb8d6170c108921e1578f11540d87a141d776b4f4680e5bc6b493aa9ac8.png" src="../../../_images/26ba4eb8d6170c108921e1578f11540d87a141d776b4f4680e5bc6b493aa9ac8.png" />
 </div>
 </div>
 <hr style="border:1px solid black">
@@ -1176,25 +1081,6 @@ Saved modified mask as: ./stage2_nsclean_modified/jw01335004001_03101_00002_nrs2
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing jw01335004001_03101_00002_nrs1_rate.fits... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs1_mask.fits
-Saved jw01335004001_03101_00002_nrs1_nsclean.fits
-Saved jw01335004001_03101_00002_nrs1_cal.fits
-Saved jw01335004001_03101_00002_nrs1_x1d.fits
-Processing jw01335004001_03101_00002_nrs2_rate.fits... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved jw01335004001_03101_00002_nrs2_mask.fits
-Saved jw01335004001_03101_00002_nrs2_nsclean.fits
-Saved jw01335004001_03101_00002_nrs2_cal.fits
-Saved jw01335004001_03101_00002_nrs2_x1d.fits
-Run time:  13.95  min
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="comparing-original-vs-cleaned-data-hand-modified-mask">
@@ -1216,10 +1102,6 @@ Run time:  13.95  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/727bdd979753298eb2a173160c91f34cb41c6819f3203c83f9e5c74e6796f05c.png" src="../../../_images/727bdd979753298eb2a173160c91f34cb41c6819f3203c83f9e5c74e6796f05c.png" />
-<img alt="../../../_images/240fc3312a7950aac51619c6297d253d591053890fca28c7b5bbfeb40177336e.png" src="../../../_images/240fc3312a7950aac51619c6297d253d591053890fca28c7b5bbfeb40177336e.png" />
-</div>
 </div>
 <p>Compare the extracted spectrum from the cleaned data to the spectrum extracted from the original rate file.</p>
 <div class="cell docutils container">
@@ -1237,10 +1119,6 @@ Run time:  13.95  min
     <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/5d2efdda67bdcaedc8a54cbe2c1df4d3dd6e7e0cee64edbfcba171340bdb1bb9.png" src="../../../_images/5d2efdda67bdcaedc8a54cbe2c1df4d3dd6e7e0cee64edbfcba171340bdb1bb9.png" />
-<img alt="../../../_images/e90a36d5336721644507312ee2a3a296a084b4fa41454f01c4c83cc76fbffbc0.png" src="../../../_images/e90a36d5336721644507312ee2a3a296a084b4fa41454f01c4c83cc76fbffbc0.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
@@ -1321,9 +1199,6 @@ Run time:  13.95  min
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/b2f4e5fbbddcfcecf2efe4a51ae96326aab7ee8e55fd3413bc9300f60ae02de3.png" src="../../../_images/b2f4e5fbbddcfcecf2efe4a51ae96326aab7ee8e55fd3413bc9300f60ae02de3.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1354,10 +1229,6 @@ Run time:  13.95  min
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/97dd34509177ce4ab3348690e716219e3e1fa4fc6c6784fa730803bcfa2357fd.png" src="../../../_images/97dd34509177ce4ab3348690e716219e3e1fa4fc6c6784fa730803bcfa2357fd.png" />
-<img alt="../../../_images/736d24dcb46d916ab0e59b62c8d50783c617ca60d3b5ca8c974a05df1df79add.png" src="../../../_images/736d24dcb46d916ab0e59b62c8d50783c617ca60d3b5ca8c974a05df1df79add.png" />
 </div>
 </div>
 <div class="alert alert-block alert-info">
